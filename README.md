@@ -1,73 +1,106 @@
-<h1 align="center">🤖 Telegram Bot Template</h1>
+<h1 align="center">📝 Turnitin Pro Essay Analyzer Telegram Bot</h1>
 
-<img align="right" width="35%" src="https://github.com/bot-base/telegram-bot-template/assets/26162440/c4371683-3e99-4b1c-ae8e-11ccbea78f4b">
-
-Bot starter template based on [grammY](https://grammy.dev/) bot framework.
+A Telegram bot for plagiarism detection and essay analysis using Turnitin's technology. Users can upload essays, purchase credits, and receive detailed similarity reports.
 
 ## Features
 
-- Scalable structure
-- Config loading and validation
-- Internationalization, language changing
-- Graceful shutdown
-- Logger (powered by [pino](https://github.com/pinojs/pino))
-- Ultrafast and multi-runtime server (powered by [hono](https://github.com/honojs/hono))
-- Ready-to-use deployment setups:
-    - [Docker](#docker-dockercom)
-    - [Vercel](#vercel-vercelcom)
-- Examples:
-    - grammY plugins:
-        - [Conversations](#grammy-conversations-grammydevpluginsconversations)
-    - Databases:
-      - [Prisma ORM](#prisma-orm-prismaio)
-    - Runtimes:
-      - [Bun](#bun-bunsh)
+- 📤 **Essay Upload**: Upload documents (.doc, .docx, .pdf, .txt) for plagiarism analysis
+- 💳 **Credit-Based System**: Purchase credits (1 credit = 20 HKD) to analyze essays
+- 💰 **Stripe Integration**: Secure payment processing via Stripe
+- 🗄️ **Supabase Database**: User management, transaction tracking, and file storage
+- 🌐 **Multi-language Support**: English and Chinese (Traditional/Simplified)
+- 👤 **User Profile**: View credit balance and purchase history
+- 💬 **Feedback System**: Collect user feedback to improve service
+- 🔐 **Admin Commands**: Admin-only commands for bot management
+- 📊 **Transaction Tracking**: Complete payment and credit usage history
+- 🚀 **Scalable Architecture**: Built with grammY framework and Hono server
+- 📝 **Structured Logging**: Powered by Pino logger
 
-## Usage
+## Setup Guide
 
-Follow these steps to set up and run your bot using this template:
+### Prerequisites
 
-1. **Create a New Repository**
+- Node.js >= 20.0.0
+- npm >= 8.0.0
+- A Telegram Bot Token from [@BotFather](https://t.me/BotFather)
+- A Supabase project with database tables set up
+- A Stripe account with API keys
 
-    Start by creating a new repository using this template. You can do this by clicking [here](https://github.com/bot-base/telegram-bot-template/generate).
+### Installation
 
-2. **Environment Variables Setup**
+1. **Clone the Repository**
 
-    Create an environment variables file by copying the provided example file:
-     ```bash
-     cp .env.example .env
-     ```
-    Open the newly created `.env` file and set the `BOT_TOKEN` environment variable.
+    ```bash
+    git clone <repository-url>
+    cd turndetect-telegram-bot
+    ```
 
-3. **Launching the Bot**
+2. **Install Dependencies**
 
-    You can run your bot in both development and production modes.
-
-    **Development Mode:**
-
-    Install the required dependencies:
     ```bash
     npm install
     ```
+
+3. **Environment Variables Setup**
+
+    Create a `.env` file in the root directory with the following variables:
+
+    ```env
+    # Required
+    BOT_TOKEN=your_telegram_bot_token
+    BOT_MODE=polling  # or 'webhook'
+    SUPABASE_URL=your_supabase_project_url
+    SUPABASE_KEY=your_supabase_anon_key
+    STRIPE_SECRET_KEY=your_stripe_secret_key
+
+    # Optional
+    BOT_USERNAME=your_bot_username
+    STRIPE_PRICE=2000  # Price in cents (default: not set)
+    STRIPE_CURRENCY=usd  # Default: 'usd'
+    LOG_LEVEL=info  # Default: 'info'
+    DEBUG=false  # Default: 'false'
+    BOT_ADMINS=[123456789]  # JSON array of admin user IDs
+    BOT_ALLOWED_UPDATES=[]  # JSON array of allowed update types
+
+    # Required for webhook mode only
+    BOT_WEBHOOK=https://your-domain.com/webhook
+    BOT_WEBHOOK_SECRET=your_webhook_secret_token
+    SERVER_HOST=0.0.0.0  # Default: '0.0.0.0'
+    SERVER_PORT=80  # Default: 80
+    ```
+
+4. **Database Setup**
+
+    Ensure your Supabase database has the following tables:
+    - `users` - User information and credit balance
+    - `essay_uploads` - Essay upload records
+    - `transactions` - Payment transaction records
+    - `credit_usage` - Credit usage history
+    - `feedback` - User feedback records
+
+    Also ensure you have a Supabase Storage bucket named `essays` for file storage.
+
+5. **Launching the Bot**
+
+    **Development Mode:**
+
     Start the bot in watch mode (auto-reload when code changes):
     ```bash
     npm run dev
     ```
 
-   **Production Mode:**
+    **Production Mode:**
 
-    Install only production dependencies:
+    Build the project:
     ```bash
-    npm install --only=prod
+    npm run build
     ```
 
-    Set `DEBUG` environment variable to `false` in your `.env` file.
-
-    Start the bot in production mode:
+    Start the bot:
     ```bash
-    npm run start:force # skip type checking and start
+    npm run start:force  # skip type checking and start
     # or
-    npm start # with type checking (requires development dependencies)
+    npm start  # with type checking (requires dev dependencies)
     ```
 
 ### List of Available Commands
@@ -83,175 +116,67 @@ Follow these steps to set up and run your bot using this template:
 
 ```
 project-root/
-  ├── locales # Localization files
-  └── src
-      ├── bot # Code related to bot
-      │   ├── callback-data # Callback data builders
-      │   ├── features      # Bot features
-      │   ├── filters       # Update filters
-      │   ├── handlers      # Update handlers
-      │   ├── helpers       # Helper functions
-      │   ├── keyboards     # Keyboard builders
-      │   ├── middlewares   # Bot middlewares
-      │   ├── i18n.ts       # Internationalization setup
-      │   ├── context.ts    # Context object definition
-      │   └── index.ts      # Bot entry point
-      ├── server # Code related to web server
-      │   ├── middlewares   # Server middlewares
-      │   ├── environment   # Server environment setup
-      │   └── index.ts      # Server entry point
-      ├── config.ts # Application config
-      ├── logger.ts # Logging setup
-      └── main.ts   # Application entry point
+  ├── locales/              # Localization files (en.ftl, zh.ftl)
+  ├── build/                # Compiled JavaScript files
+  └── src/
+      ├── bot/              # Bot-related code
+      │   ├── callback-data/    # Callback data builders
+      │   ├── features/         # Bot features (admin, credit, feedback, language, profile, upload, welcome)
+      │   ├── filters/          # Update filters (is-admin)
+      │   ├── handlers/         # Update handlers (commands, error)
+      │   ├── helpers/          # Helper functions (keyboard, logging)
+      │   ├── keyboards/        # Keyboard builders
+      │   ├── middlewares/      # Bot middlewares (session, update-logger, user-session)
+      │   ├── i18n.ts           # Internationalization setup
+      │   ├── context.ts        # Context object definition
+      │   └── index.ts          # Bot entry point
+      ├── db/                # Database-related code
+      │   ├── services/         # Database services (credit-usage, essay, feedback, transaction, user)
+      │   ├── supabase.ts       # Supabase client setup
+      │   └── types.ts          # Database type definitions
+      ├── payment/            # Payment integration
+      │   └── stripe.service.ts # Stripe service
+      ├── server/             # Web server code
+      │   ├── middlewares/      # Server middlewares (logger, request-id, request-logger)
+      │   ├── environment.ts    # Server environment setup
+      │   └── index.ts          # Server entry point
+      ├── config.ts            # Application configuration
+      ├── logger.ts            # Logging setup
+      └── main.ts              # Application entry point
 ```
 
-## Deploy
+## Usage
 
-### Docker ([docker.com](https://docker.com))
+### Bot Commands
 
-Branch:
-[deploy/docker-compose](https://github.com/bot-base/telegram-bot-template/tree/deploy/docker-compose)
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/deploy/docker-compose))
+- `/start` - Start the bot and see the welcome message
+- `/language` - Change the bot's language (if multiple locales are available)
+- `/setcommands` - Set bot commands (admin only)
 
-Use in your project:
+### User Flow
 
-1. Add the template repository as a remote
+1. **Start the Bot**: Users send `/start` to begin
+2. **Upload Essay**: Click "Upload Essay" button or send a document directly
+3. **Purchase Credits**: If credits are insufficient, users can purchase credits (1 credit = 20 HKD)
+4. **View Profile**: Check credit balance and purchase history
+5. **Provide Feedback**: Share feedback about the service
 
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
+### Credit System
 
-2. Merge deployment setup
+- Each essay upload costs **1 credit**
+- Credits can be purchased in packages:
+  - 10 credits for 200 HKD
+  - 100 credits for 2000 HKD
+  - Custom amount (minimum 1 credit)
 
-```sh
-git merge template/deploy/docker-compose -X theirs --squash --no-commit --allow-unrelated-histories
-```
+### Supported File Formats
 
-3. Follow [the usage instructions](https://github.com/bot-base/telegram-bot-template/tree/deploy/docker-compose#usage) in the `deploy/docker-compose` branch.
+- `.doc` - Microsoft Word 97-2003
+- `.docx` - Microsoft Word 2007+
+- `.pdf` - Portable Document Format
+- `.txt` - Plain text
 
-### Vercel ([vercel.com](https://vercel.com))
-
-Branch:
-[deploy/vercel](https://github.com/bot-base/telegram-bot-template/tree/deploy/vercel)
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/deploy/vercel))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge deployment setup
-
-```sh
-git merge template/deploy/vercel -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
-3. Follow [the usage instructions](https://github.com/bot-base/telegram-bot-template/tree/deploy/vercel#usage) in the `deploy/vercel` branch.
-
-## Examples
-
-### grammY conversations ([grammy.dev/plugins/conversations](https://grammy.dev/plugins/conversations))
-
-Branch:
-[example/plugin-conversations](https://github.com/bot-base/telegram-bot-template/tree/example/plugin-conversations)
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/example/plugin-conversations))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge example
-
-```sh
-git merge template/example/plugin-conversations -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
-3. Install dependencies
-
-```sh
-npm i @grammyjs/conversations
-```
-
-4. Follow [the usage instructions](https://github.com/bot-base/telegram-bot-template/tree/example/plugin-conversations#usage) in the `example/plugin-conversations` branch.
-
-### Prisma ORM ([prisma.io](https://prisma.io))
-
-Branch:
-[example/orm-prisma](https://github.com/bot-base/telegram-bot-template/tree/example/orm-prisma)
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/example/orm-prisma))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge example
-
-```sh
-git merge template/example/orm-prisma -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
-3. Install dependencies
-
-```sh
-npm i -D prisma
-npm i @prisma/client
-```
-
-4. Follow [the usage instructions](https://github.com/bot-base/telegram-bot-template/tree/example/orm-prisma#usage) in the `example/orm-prisma` branch.
-
-### Bun ([bun.sh](https://bun.sh))
-
-Branch:
-[example/runtime-bun](https://github.com/bot-base/telegram-bot-template/tree/example/runtime-bun)
-([open diff](https://github.com/bot-base/telegram-bot-template/compare/example/runtime-bun))
-
-Use in your project:
-
-1. Add the template repository as a remote
-
-```sh
-git remote add template git@github.com:bot-base/telegram-bot-template.git
-git remote update
-```
-
-2. Merge example
-
-```sh
-git merge template/example/runtime-bun -X theirs --squash --no-commit --allow-unrelated-histories
-```
-
-3. Install dependencies
-
-```sh
-# remove Node-related dependencies
-npm r @types/node tsx tsc-watch
-
-# install dependencies
-bun i
-
-# remove npm lockfile
-rm package-lock.json
-
-# install bun typings
-bun add -d @types/bun
-```
-
-4. Follow [the usage instructions](https://github.com/bot-base/telegram-bot-template/tree/example/runtime-bun#usage) in the `example/runtime-bun` branch.
+**Maximum file size**: 20MB
 
 ## Environment Variables
 
