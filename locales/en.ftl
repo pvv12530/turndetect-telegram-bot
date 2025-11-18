@@ -123,8 +123,9 @@ help-message =
     <b>File Size Limit:</b>
     📦 Maximum 20MB
     
-    <b>Pricing:</b>
-    💰 See current pricing when you upload
+    <b>Credits System:</b>
+    💳 1 credit = 1 doc check = 20 HKD
+    Each document upload and analysis costs 1 credit. You can purchase credits from your profile.
     
     <b>Processing Time:</b>
     ⏱️ 5-10 minutes after payment
@@ -165,6 +166,9 @@ credit-purchase-message =
     
     💳 <b>Current Credits:</b> { $currentCredit }
     💵 <b>Price:</b> { $pricePerCredit } HKD per credit
+    
+    📝 <b>About Credits:</b>
+    1 credit = 1 doc check = 20 HKD
     
     Choose how many credits you want to purchase:
 
