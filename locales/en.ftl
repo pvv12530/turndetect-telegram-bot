@@ -132,6 +132,12 @@ help-message =
     
     <b>Need Support?</b>
     Contact us if you have any questions!
+    
+    📧 <b>Email:</b>
+    ronald@studyhardprofessor.com
+    
+    💬 <b>WhatsApp:</b>
+    wa.me/85261994783
 
 ## Unhandled Feature
 

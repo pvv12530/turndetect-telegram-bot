@@ -132,6 +132,12 @@ help-message =
     
     <b>需要支持？</b>
     如有任何問題，請聯繫我們！
+    
+    📧 <b>電子郵件：</b>
+    ronald@studyhardprofessor.com
+    
+    💬 <b>WhatsApp：</b>
+    wa.me/85261994783
 
 ## Unhandled Feature
 
