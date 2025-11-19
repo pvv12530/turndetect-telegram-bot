@@ -14,14 +14,8 @@ function calculateCreditPrice(credits: number): number {
   if (credits === 100) {
     return 1700 // 100 credits = HKD 1700
   }
-  // For custom amounts, use tiered pricing
-  if (credits >= 100) {
-    return credits * 17 // 17 HKD per credit for 100+ credits
-  }
-  if (credits >= 10) {
-    return credits * 18 // 18 HKD per credit for 10-99 credits
-  }
-  return credits * 18 // 18 HKD per credit for < 10 credits
+  // For other amounts: 1 credit = 20 HKD
+  return credits * 20
 }
 
 // Handle buy credit button
@@ -55,13 +49,10 @@ feature.callbackQuery('buy_credit', logHandle('callback-buy-credit'), async (ctx
       .row()
       .text(ctx.t('credit-button-back-profile'), 'profile')
 
-    // Calculate price for display
-    const price10 = calculateCreditPrice(10)
-
     await ctx.editMessageText(
       ctx.t('credit-purchase-message', {
         currentCredit: credit.toString(),
-        pricePerCredit: (price10 / 10).toString(), // Show price per credit for 10-credit package
+        pricePerCredit: '20', // 1 credit = 20 HKD
       }),
       {
         parse_mode: 'HTML',
