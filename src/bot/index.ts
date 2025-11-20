@@ -12,6 +12,7 @@ import { uploadFeature } from '#root/bot/features/upload.js'
 import { welcomeFeature } from '#root/bot/features/welcome.js'
 import { errorHandler } from '#root/bot/handlers/error.js'
 import { i18n, isMultipleLocales } from '#root/bot/i18n.js'
+import { restoreLanguage } from '#root/bot/middlewares/restore-language.js'
 import { session } from '#root/bot/middlewares/session.js'
 import { updateLogger } from '#root/bot/middlewares/update-logger.js'
 import { userSession } from '#root/bot/middlewares/user-session.js'
@@ -81,6 +82,7 @@ export function createBot(token: string, dependencies: Dependencies, botConfig?:
   }))
   protectedBot.use(userSession())
   protectedBot.use(i18n)
+  protectedBot.use(restoreLanguage())
 
   // Handlers
   protectedBot.use(welcomeFeature)

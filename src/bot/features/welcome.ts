@@ -18,7 +18,8 @@ feature.command('start', logHandle('command-start'), async (ctx) => {
         username: ctx.from.username || null,
         first_name: ctx.from.first_name || null,
         last_name: ctx.from.last_name || null,
-        language_code: ctx.from.language_code || null,
+        // Preserve existing language_code if user has manually set it, otherwise use Telegram's language_code
+        language_code: existingUser?.language_code || ctx.from.language_code || null,
         credit: existingUser?.credit || 0,
       })
 

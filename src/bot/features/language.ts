@@ -33,6 +33,26 @@ feature.callbackQuery(
     if (i18n.locales.includes(languageCode)) {
       await ctx.i18n.setLocale(languageCode)
 
+      // Save language preference to database
+      if (ctx.session.userId) {
+        try {
+          await ctx.userService.update(ctx.session.userId, {
+            language_code: languageCode,
+          })
+          ctx.logger.info(
+            { userId: ctx.session.userId, languageCode },
+            'Language preference saved to database',
+          )
+        }
+        catch (error) {
+          ctx.logger.error(
+            { error, userId: ctx.session.userId, languageCode },
+            'Failed to save language preference to database',
+          )
+          // Continue even if database update fails - language is already set in session
+        }
+      }
+
       return ctx.editMessageText(ctx.t('language-changed'), {
         reply_markup: await createChangeLanguageKeyboard(ctx),
       })

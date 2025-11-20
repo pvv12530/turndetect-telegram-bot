@@ -84,4 +84,3 @@ export class FeedbackService {
     return data as FeedbackRow[]
   }
 }
-
