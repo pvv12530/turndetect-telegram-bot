@@ -63,6 +63,7 @@ ai-report-introduction =
     <b>Credit Reduction Rules:</b>
     • 3000 words = 1 credit
     • 3000-6001 words = 2 credits
+    • An so on...
     
     Supported formats: .doc, .docx
     Maximum size: 20MB
