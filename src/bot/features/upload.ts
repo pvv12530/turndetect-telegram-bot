@@ -747,7 +747,7 @@ feature.callbackQuery(/^originality_confirm_(\d+)$/, logHandle('callback-origina
       check_contentOptimizer: false,
       storeScan: true,
       excludedUrls: [],
-      aiModelVersion: 'lite-102',
+      aiModelVersion: 'lite',
       content: textContent,
     }
 
@@ -1060,7 +1060,7 @@ async function handleOriginalityPaymentSuccess(ctx: Context, uploadId: number, u
       check_contentOptimizer: false,
       storeScan: true,
       excludedUrls: [],
-      aiModelVersion: 'lite-102',
+      aiModelVersion: 'lite',
       content: textContent,
     }
 
