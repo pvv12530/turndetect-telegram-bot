@@ -50,11 +50,19 @@ admin-commands-updated = 命令已更新。
 ai-report-introduction = 
     📤 <b>請發送您的論文文檔</b>
     
-    這系統出的AI報告比Turnitin 更嚴緊, 更準確, 更快速 (如這報告沒問題 = Turnitin 沒問題)
+    這系統比Turnitin更嚴格
+    
+    如果原創性為100%信心度，則turnitin = 0%
+    
+    這系統出的AI報告比Turnitin更準確、更快速 (如這報告沒問題 = Turnitin 沒問題)
     
     不會上載你的文章到系統.
     
-    你只需修改黃色，橙色，紅色 Highlight 的段落/文字
+    你只需修改黃色，橙色，紅色 Highlight 的段落/文字以降低AI%
+    
+    <b>積分扣除規則：</b>
+    • 3000字 = 1積分
+    • 3000-6001字 = 2積分
     
     支持格式：.doc、.docx
     最大大小：20MB

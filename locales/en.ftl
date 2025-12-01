@@ -50,11 +50,19 @@ admin-commands-updated = Commands updated.
 ai-report-introduction = 
     📤 <b>Please send your essay document</b>
     
-    This AI report is stricter, more accurate, and faster than Turnitin (if this report shows no issues, Turnitin will definitely be fine)
+    This system is stricter than Turnitin
+    
+    If originality is 100% confidence, then turnitin = 0%
+    
+    This AI report is more accurate and faster than Turnitin (if this report shows no issues, Turnitin will definitely be fine)
     
     Your essay will NOT be uploaded to any external database
     
-    You only need to revise the parts highlighted in yellow, orange, or red
+    You only need to revise the parts highlighted in yellow, orange, or red to reduce AI%
+    
+    <b>Credit Reduction Rules:</b>
+    • 3000 words = 1 credit
+    • 3000-6001 words = 2 credits
     
     Supported formats: .doc, .docx
     Maximum size: 20MB
