@@ -19,7 +19,7 @@ welcome =
     📊 Plagiarism detection against billions of sources
     📈 Detailed similarity reports with matched sources
     🔍 Citation analysis
-    📋 Multiple formats: .doc, .docx, .pdf, .txt
+    📋 Multiple formats: .doc, .docx
     
     🚀 <b>How It Works:</b>
     
@@ -47,10 +47,16 @@ admin-commands-updated = Commands updated.
 
 ## Upload Feature
 
-upload-prompt = 
+ai-report-introduction = 
     📤 <b>Please send your essay document</b>
     
-    Supported formats: .doc, .docx, .pdf, .txt
+    This AI report is stricter, more accurate, and faster than Turnitin (if this report shows no issues, Turnitin will definitely be fine)
+    
+    Your essay will NOT be uploaded to any external database
+    
+    You only need to revise the parts highlighted in yellow, orange, or red
+    
+    Supported formats: .doc, .docx
     Maximum size: 20MB
 
 upload-processing = ⏳ Processing your document...
@@ -118,7 +124,7 @@ help-message =
     • Detailed similarity breakdown
     
     <b>Supported Formats:</b>
-    📄 .doc, .docx, .pdf, .txt
+    📄 .doc, .docx
     
     <b>File Size Limit:</b>
     📦 Maximum 20MB
@@ -243,6 +249,178 @@ upload-success-credit =
 
 upload-success-button-profile = 👤 Profile
 upload-success-button-home = 🏠 Home
+
+upload-button-continue = ✅ Continue
+upload-button-cancel = ❌ Cancel
+upload-button-buy-credits = 💳 Buy Credits
+upload-button-back-home = 🏠 Back to Home
+
+upload-no-service-selected = 
+    ⚠️ <b>Please select a service first</b>
+    
+    Please select a service from the menu below:
+
+upload-ai-report-format-error = 
+    ❌ <b>Invalid file format for AI report service</b>
+    
+    Only .doc or .docx format files are accepted for AI report service. Please upload a .doc or .docx file.
+
+upload-docx-format-error = 
+    ❌ <b>Invalid file format</b>
+    
+    Only DOCX format files are accepted. Please upload a .docx file.
+
+upload-service-not-available = 
+    ❌ <b>Service not available</b>
+    
+    Please select a service from the main menu.
+
+upload-ai-report-not-configured = 
+    ❌ <b>AI report service is not configured</b>
+    
+    Please contact support.
+
+## Originality Analysis Results
+
+originality-analysis-completed = ✅ <b>Analysis Completed!</b>
+originality-analysis-file = 📄 <b>File:</b> { $fileName }
+originality-analysis-word-count = 📝 <b>Word Count:</b> { $wordCount } words
+originality-analysis-results-title = 🤖 <b>AI Detection Results:</b>
+originality-analysis-ai-score =    • <b>AI Score:</b> { $aiScore }%
+originality-analysis-original-score =    • <b>Original Score:</b> { $originalScore }%
+originality-analysis-confidence =    • <b>Confidence:</b> { $confidence }%
+originality-analysis-full-report = 🔗 <b>Full Report:</b> { $publicLink }
+originality-analysis-credits-used = 💰 <b>Credits Used:</b> { $creditsUsed }
+originality-analysis-remaining-credits = 💳 <b>Remaining Credits:</b> { $remainingCredits }
+originality-analysis-view-report = 🔗 View Full Report
+
+## Upload Error Messages
+
+upload-analyzing-in-progress = 
+    ⏳ <b>Analysis in Progress</b>
+    
+    You are currently analyzing a document. Please wait for the current analysis to complete before uploading another document.
+
+upload-error-save-file = 
+    ❌ <b>Failed to save file</b>
+    
+    Error: { $errorMessage }
+
+upload-error-read-file = 
+    ❌ <b>Failed to read file</b>
+    
+    Error: { $errorMessage }
+
+upload-error-extract-text-empty = 
+    ❌ <b>Unable to extract text</b>
+    
+    Unable to extract text from document. Please ensure the document contains readable text.
+
+upload-error-extract-text = 
+    ❌ <b>Failed to extract text</b>
+    
+    Error: { $errorMessage }
+
+upload-originality-confirmation = 
+    📊 <b>Document Analysis</b>
+    
+    📄 <b>File:</b> { $fileName }
+    📝 <b>Word Count:</b> { $wordCount } words
+    
+    💰 <b>Required Credits:</b> { $requiredCredits }
+    💳 <b>Your Credits:</b> { $currentCredit }
+    
+    You have enough credits to proceed. Would you like to continue?
+
+upload-originality-insufficient-credits = 
+    📊 <b>Document Analysis</b>
+    
+    📄 <b>File:</b> { $fileName }
+    📝 <b>Word Count:</b> { $wordCount } words
+    
+    💰 <b>Required Credits:</b> { $requiredCredits }
+    💳 <b>Your Credits:</b> { $currentCredit }
+    
+    ❌ You don't have enough credits. Please purchase credits to continue.
+
+upload-originality-processing = ⏳ Processing your document with Originality.ai...
+
+upload-error-processing-request = 
+    ❌ <b>Error processing request</b>
+    
+    Please contact support.
+
+upload-error-not-found = 
+    ❌ <b>Upload not found</b>
+    
+    The upload you're looking for could not be found.
+
+upload-error-user-not-found = 
+    ❌ <b>User not found</b>
+    
+    Your user account could not be found.
+
+upload-error-insufficient-credits-retry = 
+    ❌ <b>Insufficient Credits</b>
+    
+    You no longer have enough credits. Please purchase credits.
+
+upload-error-download-storage = 
+    ❌ <b>Failed to download file</b>
+    
+    Failed to download file from storage.
+
+upload-error-unsupported-format = 
+    ❌ <b>Unsupported file format</b>
+    
+    The file format is not supported.
+
+upload-error-no-text-content = 
+    ❌ <b>No text content</b>
+    
+    No text content extracted from document.
+
+upload-error-read-content = 
+    ❌ <b>Failed to read document content</b>
+    
+    Error: { $errorMessage }
+
+upload-error-process-failed = 
+    ❌ <b>Failed to process your document</b>
+    
+    Please contact support if this issue persists.
+
+upload-originality-cancelled = 
+    ❌ <b>Analysis cancelled</b>
+    
+    The analysis has been cancelled.
+
+upload-error-payment-processing = 
+    ❌ <b>Error processing payment</b>
+    
+    Please contact support.
+
+## Welcome Feature Errors
+
+welcome-service-not-found = 
+    ❌ <b>Service not found</b>
+    
+    The requested service could not be found.
+
+welcome-service-stopped = 
+    ⚠️ <b>Service temporarily unavailable</b>
+    
+    This service is currently stopped for now.
+
+welcome-upload-prompt-docx = 
+    📤 <b>Please upload your essay document</b>
+    
+    DOCX format only.
+
+welcome-error-occurred = 
+    ❌ <b>An error occurred</b>
+    
+    Please try again.
 
 ## Feedback Feature
 

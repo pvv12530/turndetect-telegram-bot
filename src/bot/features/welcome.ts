@@ -66,9 +66,37 @@ feature.command('start', logHandle('command-start'), async (ctx) => {
     }
   }
 
+  // Query services from database
+  let services: Array<{ id: string, name: string | null, status: boolean | null, service_button_id: string | null }> = []
+  try {
+    const servicesList = await ctx.serviceService.findAll()
+    services = servicesList.map(s => ({
+      id: s.id,
+      name: s.name,
+      status: s.status,
+      service_button_id: s.service_button_id,
+    }))
+  }
+  catch (error) {
+    ctx.logger.error({ error }, 'Failed to fetch services')
+  }
+
+  // Build keyboard with services
   const keyboard = new InlineKeyboard()
-    .text(ctx.t('welcome-button-upload'), 'upload_essay')
-    .row()
+
+  // Add service buttons
+  if (services.length > 0) {
+    for (const service of services) {
+      if (service.service_button_id && service.name) {
+        const statusEmoji = service.status ? '✅' : '❌'
+        keyboard.text(`${statusEmoji} ${service.name}`, service.service_button_id)
+      }
+    }
+    keyboard.row()
+  }
+
+  // Add other buttons
+  keyboard
     .text(ctx.t('welcome-button-profile'), 'profile')
     .text(ctx.t('welcome-button-language'), 'change_language')
     .row()
@@ -80,6 +108,55 @@ feature.command('start', logHandle('command-start'), async (ctx) => {
     parse_mode: 'HTML',
     reply_markup: keyboard,
   })
+})
+
+// Handle service button callbacks
+feature.callbackQuery(/^service-button-/, logHandle('callback-service'), async (ctx) => {
+  await ctx.answerCallbackQuery()
+
+  const buttonId = ctx.callbackQuery.data
+
+  try {
+    // Find service by button ID
+    const service = await ctx.serviceService.findByButtonId(buttonId)
+
+    if (!service) {
+      await ctx.reply(ctx.t('welcome-service-not-found'), {
+        parse_mode: 'HTML',
+      })
+      return
+    }
+
+    // Check service status
+    if (!service.status) {
+      // Service is stopped
+      await ctx.reply(ctx.t('welcome-service-stopped'), {
+        parse_mode: 'HTML',
+      })
+      return
+    }
+
+    // Service is active - store selected service and prompt for document upload
+    ctx.session.selectedServiceButtonId = buttonId
+
+    // Special handling for originality service
+    if (buttonId === 'service-button-originality') {
+      await ctx.reply(ctx.t('ai-report-introduction'), {
+        parse_mode: 'HTML',
+      })
+    }
+    else {
+      await ctx.reply(ctx.t('welcome-upload-prompt-docx'), {
+        parse_mode: 'HTML',
+      })
+    }
+  }
+  catch (error) {
+    ctx.logger.error({ error, buttonId }, 'Failed to handle service button')
+    await ctx.reply(ctx.t('welcome-error-occurred'), {
+      parse_mode: 'HTML',
+    })
+  }
 })
 
 export { composer as welcomeFeature }

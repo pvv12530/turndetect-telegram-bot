@@ -18,9 +18,12 @@ import { updateLogger } from '#root/bot/middlewares/update-logger.js'
 import { userSession } from '#root/bot/middlewares/user-session.js'
 import { EssayService } from '#root/db/services/essay.service.js'
 import { FeedbackService } from '#root/db/services/feedback.service.js'
+import { OriginalityLogService } from '#root/db/services/originality-log.service.js'
+import { ServiceService } from '#root/db/services/service.service.js'
 import { UserService } from '#root/db/services/user.service.js'
 import { createSupabaseClient } from '#root/db/supabase.js'
 import { StripeService } from '#root/payment/stripe.service.js'
+import { OriginalityService } from '#root/services/originality.service.js'
 import { autoChatAction } from '@grammyjs/auto-chat-action'
 import { hydrate } from '@grammyjs/hydrate'
 import { hydrateReply, parseMode } from '@grammyjs/parse-mode'
@@ -49,7 +52,20 @@ export function createBot(token: string, dependencies: Dependencies, botConfig?:
   const userService = new UserService(supabase)
   const essayService = new EssayService(supabase)
   const feedbackService = new FeedbackService(supabase)
+  const serviceService = new ServiceService(supabase)
   const stripeService = new StripeService(config)
+  const originalityLogService = new OriginalityLogService(supabase)
+
+  // Initialize OriginalityService only if API key is provided
+  let originalityService: OriginalityService | null = null
+  try {
+    if (config.originalityApiKey) {
+      originalityService = new OriginalityService(config)
+    }
+  }
+  catch (error) {
+    logger.warn({ error }, 'Originality service not available')
+  }
 
   bot.use(async (ctx, next) => {
     ctx.config = config
@@ -59,7 +75,13 @@ export function createBot(token: string, dependencies: Dependencies, botConfig?:
     ctx.userService = userService
     ctx.essayService = essayService
     ctx.feedbackService = feedbackService
+    ctx.serviceService = serviceService
     ctx.stripeService = stripeService
+    ctx.originalityLogService = originalityLogService
+    // Only set originalityService if it was successfully initialized
+    if (originalityService) {
+      ctx.originalityService = originalityService
+    }
 
     await next()
   })

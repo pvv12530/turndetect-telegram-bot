@@ -19,7 +19,7 @@ welcome =
     📊 針對數十億來源的抄襲檢測
     📈 詳細的相似度報告及匹配來源
     🔍 引用分析
-    📋 支持多種格式：.doc、.docx、.pdf、.txt
+    📋 支持多種格式：.doc、.docx
     
     🚀 <b>使用方法：</b>
     
@@ -47,10 +47,16 @@ admin-commands-updated = 命令已更新。
 
 ## Upload Feature
 
-upload-prompt = 
+ai-report-introduction = 
     📤 <b>請發送您的論文文檔</b>
     
-    支持格式：.doc、.docx、.pdf、.txt
+    這系統出的AI報告比Turnitin 更嚴緊, 更準確, 更快速 (如這報告沒問題 = Turnitin 沒問題)
+    
+    不會上載你的文章到系統.
+    
+    你只需修改黃色，橙色，紅色 Highlight 的段落/文字
+    
+    支持格式：.doc、.docx
     最大大小：20MB
 
 upload-processing = ⏳ 正在處理您的文檔...
@@ -118,7 +124,7 @@ help-message =
     • 詳細的相似度分析
     
     <b>支持格式：</b>
-    📄 .doc、.docx、.pdf、.txt
+    📄 .doc、.docx
     
     <b>檔案大小限制：</b>
     📦 最大 20MB
@@ -243,6 +249,178 @@ upload-success-credit =
 
 upload-success-button-profile = 👤 個人資料
 upload-success-button-home = 🏠 首頁
+
+upload-button-continue = ✅ 繼續
+upload-button-cancel = ❌ 取消
+upload-button-buy-credits = 💳 購買積分
+upload-button-back-home = 🏠 返回首頁
+
+upload-no-service-selected = 
+    ⚠️ <b>請先選擇服務</b>
+    
+    請從下方菜單選擇服務：
+
+upload-ai-report-format-error = 
+    ❌ <b>AI 報告服務檔案格式錯誤</b>
+    
+    AI 報告服務僅接受 .doc 或 .docx 格式檔案。請上傳 .doc 或 .docx 檔案。
+
+upload-docx-format-error = 
+    ❌ <b>檔案格式錯誤</b>
+    
+    僅接受 DOCX 格式檔案。請上傳 .docx 檔案。
+
+upload-service-not-available = 
+    ❌ <b>服務不可用</b>
+    
+    請從主菜單選擇服務。
+
+upload-ai-report-not-configured = 
+    ❌ <b>AI 報告服務未配置</b>
+    
+    請聯繫客服。
+
+## Originality Analysis Results
+
+originality-analysis-completed = ✅ <b>分析完成！</b>
+originality-analysis-file = 📄 <b>檔案：</b> { $fileName }
+originality-analysis-word-count = 📝 <b>字數：</b> { $wordCount } 字
+originality-analysis-results-title = 🤖 <b>AI 檢測結果：</b>
+originality-analysis-ai-score =    • <b>AI 分數：</b> { $aiScore }%
+originality-analysis-original-score =    • <b>原創分數：</b> { $originalScore }%
+originality-analysis-confidence =    • <b>信心度：</b> { $confidence }%
+originality-analysis-full-report = 🔗 <b>完整報告：</b> { $publicLink }
+originality-analysis-credits-used = 💰 <b>已使用積分：</b> { $creditsUsed }
+originality-analysis-remaining-credits = 💳 <b>剩餘積分：</b> { $remainingCredits }
+originality-analysis-view-report = 🔗 查看完整報告
+
+## Upload Error Messages
+
+upload-analyzing-in-progress = 
+    ⏳ <b>正在分析中</b>
+    
+    您目前正在分析文檔。請等待當前分析完成後再上傳另一個文檔。
+
+upload-error-save-file = 
+    ❌ <b>儲存檔案失敗</b>
+    
+    錯誤：{ $errorMessage }
+
+upload-error-read-file = 
+    ❌ <b>讀取檔案失敗</b>
+    
+    錯誤：{ $errorMessage }
+
+upload-error-extract-text-empty = 
+    ❌ <b>無法提取文字</b>
+    
+    無法從文檔中提取文字。請確保文檔包含可讀取的文字。
+
+upload-error-extract-text = 
+    ❌ <b>提取文字失敗</b>
+    
+    錯誤：{ $errorMessage }
+
+upload-originality-confirmation = 
+    📊 <b>文檔分析</b>
+    
+    📄 <b>檔案：</b> { $fileName }
+    📝 <b>字數：</b> { $wordCount } 字
+    
+    💰 <b>所需積分：</b> { $requiredCredits }
+    💳 <b>您的積分：</b> { $currentCredit }
+    
+    您有足夠的積分繼續。您想要繼續嗎？
+
+upload-originality-insufficient-credits = 
+    📊 <b>文檔分析</b>
+    
+    📄 <b>檔案：</b> { $fileName }
+    📝 <b>字數：</b> { $wordCount } 字
+    
+    💰 <b>所需積分：</b> { $requiredCredits }
+    💳 <b>您的積分：</b> { $currentCredit }
+    
+    ❌ 您沒有足夠的積分。請購買積分以繼續。
+
+upload-originality-processing = ⏳ 正在使用 Originality.ai 處理您的文檔...
+
+upload-error-processing-request = 
+    ❌ <b>處理請求時出錯</b>
+    
+    請聯繫客服。
+
+upload-error-not-found = 
+    ❌ <b>找不到上傳</b>
+    
+    找不到您要查找的上傳。
+
+upload-error-user-not-found = 
+    ❌ <b>找不到用戶</b>
+    
+    找不到您的用戶帳戶。
+
+upload-error-insufficient-credits-retry = 
+    ❌ <b>積分不足</b>
+    
+    您不再有足夠的積分。請購買積分。
+
+upload-error-download-storage = 
+    ❌ <b>下載檔案失敗</b>
+    
+    無法從儲存空間下載檔案。
+
+upload-error-unsupported-format = 
+    ❌ <b>不支援的檔案格式</b>
+    
+    不支援此檔案格式。
+
+upload-error-no-text-content = 
+    ❌ <b>沒有文字內容</b>
+    
+    無法從文檔中提取文字內容。
+
+upload-error-read-content = 
+    ❌ <b>讀取文檔內容失敗</b>
+    
+    錯誤：{ $errorMessage }
+
+upload-error-process-failed = 
+    ❌ <b>處理文檔失敗</b>
+    
+    如果此問題持續存在，請聯繫客服。
+
+upload-originality-cancelled = 
+    ❌ <b>分析已取消</b>
+    
+    分析已被取消。
+
+upload-error-payment-processing = 
+    ❌ <b>處理支付時出錯</b>
+    
+    請聯繫客服。
+
+## Welcome Feature Errors
+
+welcome-service-not-found = 
+    ❌ <b>找不到服務</b>
+    
+    找不到請求的服務。
+
+welcome-service-stopped = 
+    ⚠️ <b>服務暫時不可用</b>
+    
+    此服務目前暫時停止。
+
+welcome-upload-prompt-docx = 
+    📤 <b>請上傳您的論文文檔</b>
+    
+    僅支援 DOCX 格式。
+
+welcome-error-occurred = 
+    ❌ <b>發生錯誤</b>
+    
+    請重試。
 
 ## Feedback Feature
 

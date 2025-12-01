@@ -168,4 +168,22 @@ export class UserService {
 
     return data as UserRow
   }
+
+  async setAnalyzingStatus(userId: number, status: boolean): Promise<UserRow> {
+    const { data, error } = await this.supabase
+      .from('users')
+      .update({
+        analyzing_status: status,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', userId)
+      .select()
+      .single()
+
+    if (error || !data) {
+      throw error || new Error('Failed to update analyzing status')
+    }
+
+    return data as UserRow
+  }
 }

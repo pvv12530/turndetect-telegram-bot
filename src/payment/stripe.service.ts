@@ -47,7 +47,7 @@ export class StripeService {
             currency: options.currency,
             product_data: {
               name: `Essay Analysis - ${options.fileName}`,
-              description: 'Turnitin Pro plagiarism check and detailed report',
+              description: 'AI detection and originality analysis',
             },
             unit_amount: options.amount, // Amount in cents
           },

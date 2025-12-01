@@ -14,6 +14,8 @@ const baseConfigSchema = v.object({
   stripePrice: v.optional(v.pipe(v.string(), v.transform(Number), v.number())),
   stripeCurrency: v.optional(v.string(), 'usd'),
   botUsername: v.optional(v.string(), 'your_bot'),
+  backendApiUrl: v.optional(v.pipe(v.string(), v.url())),
+  originalityApiKey: v.optional(v.string()),
 })
 
 const configSchema = v.variant('botMode', [

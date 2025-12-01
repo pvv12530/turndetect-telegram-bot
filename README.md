@@ -4,7 +4,7 @@ A Telegram bot for plagiarism detection and essay analysis using Turnitin's tech
 
 ## Features
 
-- 📤 **Essay Upload**: Upload documents (.doc, .docx, .pdf, .txt) for plagiarism analysis
+- 📤 **Essay Upload**: Upload documents (.doc, .docx) for plagiarism analysis
 - 💳 **Credit-Based System**: Purchase credits (1 credit = 20 HKD) to analyze essays
 - 💰 **Stripe Integration**: Secure payment processing via Stripe
 - 🗄️ **Supabase Database**: User management, transaction tracking, and file storage
