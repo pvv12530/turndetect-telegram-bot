@@ -40,7 +40,7 @@ export class StripeService {
   }): Promise<string> {
     const botUsername = options.botUsername || 'your_bot'
     const session = await this.stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'alipay'],
+      payment_method_types: ['card'],
       line_items: [
         {
           price_data: {
@@ -75,7 +75,7 @@ export class StripeService {
     const botUsername = options.botUsername || 'your_bot'
     const session = await this.stripe.checkout.sessions.create({
       customer: options.customerId,
-      payment_method_types: ['card', 'alipay'],
+      payment_method_types: ['card'],
       line_items: [
         {
           price_data: {
