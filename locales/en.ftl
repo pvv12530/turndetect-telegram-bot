@@ -10,23 +10,26 @@ setcommands =
 ## Welcome Feature
 
 welcome =
-    📝 <b>Welcome to Turnitin Pro Essay Analyzer!</b>
-    
-    Check your essays for plagiarism using Turnitin's technology trusted by 16,000+ institutions worldwide.
-    
+    📝 <b>Welcome to EssayLab_Bot Essay Analyzer!</b>
+
+    Check your essays for plagiarism and AI issues using Turnitin/Originality technology.
+
     ✨ <b>What We Offer:</b>
-    
-    📊 Plagiarism detection against billions of sources
-    📈 Detailed similarity reports with matched sources
-    🔍 Citation analysis
-    📋 Multiple formats: .doc, .docx
-    
+
+    📊 AI check reports
+    📈 Plagiarism reports
+    🔍 Highlights parts that use AI/plagiarism
+    📋 Supported formats: docx. (Microsoft Word file)
+
+    [Turnitin Feature]: We use the latest system analysis. Analysis time may be longer as the Turnitin system frequently crashes/updates
+    [Originality AI]: This system is stricter than Turnitin, generates reports faster, and is suitable for students who use AI to write essays and want to continuously reduce AI%
+
     🚀 <b>How It Works:</b>
-    
+
     1️⃣ Upload your essay
     2️⃣ Wait 5-10 minutes for analysis
     3️⃣ Receive your report
-    
+
     👇 <b>Ready?</b>
     Click "Upload Essay" or send your file directly!
 

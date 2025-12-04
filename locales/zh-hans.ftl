@@ -10,24 +10,27 @@ setcommands =
 ## Welcome Feature
 
 welcome =
-    📝 <b>歡迎使用 Turnitin Pro 論文分析器！</b>
-    
-    使用全球 16,000+ 機構信賴的 Turnitin 技術檢查您的論文是否存在抄襲。
-    
-    ✨ <b>我們提供：</b>
-    
-    📊 針對數十億來源的抄襲檢測
-    📈 詳細的相似度報告及匹配來源
-    🔍 引用分析
-    📋 支持多種格式：.doc、.docx
-    
-    🚀 <b>使用方法：</b>
-    
+    📝 歡迎使用 EssayLab_Bot 論文分析器！
+
+    使用 Turnitin/Originality 技術檢查您的論文是否存在抄襲以及人工智能問題。
+
+    ✨ 我們提供：
+
+    📊 Ai 檢查報告
+    📈 抄襲報告
+    🔍 會Highlight 有用AI/抄襲的部分
+    📋 支援格式：docx.  (Microsoft word file)
+
+    [Turnitin功能]: 我們使用最新的系統分析，分析時間可能較長，因為Turnitin系統經常死機/更新]
+    [Originality Ai]:  這系統比Turnitin系統更嚴緊，出Report 時間較快，合適於用AI寫文章，想不段減AI的同學使用]
+
+    🚀 使用方法：
+
     1️⃣ 上傳您的論文
     2️⃣ 等待 5-10 分鐘進行分析
     3️⃣ 接收您的報告
-    
-    👇 <b>準備好了嗎？</b>
+
+    👇 準備好了嗎？
     點擊「上傳論文」或直接發送您的檔案！
 
 welcome-button-upload = 📤 上傳論文
