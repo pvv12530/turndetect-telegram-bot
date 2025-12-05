@@ -21,8 +21,8 @@ welcome =
     🔍 Highlights parts that use AI/plagiarism
     📋 Supported formats: docx. (Microsoft Word file)
 
-    [Turnitin Feature]: We use the latest system analysis. Analysis time may be longer as the Turnitin system frequently crashes/updates
-    [Originality AI]: This system is stricter than Turnitin, generates reports faster, and is suitable for students who use AI to write essays and want to continuously reduce AI%
+    Turnitin Feature: We use the latest system analysis. Analysis time may be longer as the Turnitin system frequently crashes/updates
+    Originality AI: This system is stricter than Turnitin, generates reports faster, and is suitable for students who use AI to write essays and want to continuously reduce AI%
 
     🚀 <b>How It Works:</b>
 
