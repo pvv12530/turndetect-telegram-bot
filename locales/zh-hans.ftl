@@ -22,7 +22,7 @@ welcome =
     📋 支援格式：docx.  (Microsoft word file)
 
     Turnitin功能: 我們使用最新的系統分析，分析時間可能較長，因為Turnitin系統經常死機/更新]
-    Originality AI:  這系統比Turnitin系統更嚴緊，出Report 時間較快，合適於用AI寫文章，想不段減AI的同學使用]
+    Originality AI:  這系統比Turnitin系統更嚴緊，出Report 時間較快，合適於用AI寫文章，想不斷減AI的同學使用]
 
     🚀 使用方法：
 
