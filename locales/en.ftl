@@ -27,7 +27,7 @@ welcome =
     🚀 <b>How It Works:</b>
 
     1️⃣ Upload your essay
-    2️⃣ Wait 5-10 minutes for analysis
+    2️⃣ Wait 30 munites - 3 hours for analysis
     3️⃣ Receive your report
 
     👇 <b>Ready?</b>
@@ -148,7 +148,7 @@ help-message =
     You can purchase credits from your profile.
     
     <b>Processing Time:</b>
-    ⏱️ 5-10 minutes after payment
+    ⏱️ 30 munites - 3 hours after payment
     
     <b>Need Support?</b>
     Contact us if you have any questions!
