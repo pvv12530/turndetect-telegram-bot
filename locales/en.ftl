@@ -142,8 +142,10 @@ help-message =
     📦 Maximum 20MB
     
     <b>Credits System:</b>
-    💳 1 credit = 1 doc check = 20 HKD
-    Each document upload and analysis costs 1 credit. You can purchase credits from your profile.
+    💳 1 credit = 20 HKD
+    • Turnitin: 2 credits per document
+    • Originality: it is calculated based on word counts of your doc
+    You can purchase credits from your profile.
     
     <b>Processing Time:</b>
     ⏱️ 5-10 minutes after payment
@@ -168,7 +170,9 @@ profile-message =
     
     💳 <b>Remaining Credits:</b> { $credit }
     
-    Use credits to upload and analyze your essays. Each upload costs 1 credit.
+    Use credits to upload and analyze your essays.
+    • Turnitin: 2 credits per document
+    • Originality: it is calculated based on word counnts of your document
 
 profile-button-buy-credit = 💰 Buy Credits
 profile-button-back-home = 🏠 Back to Home
@@ -192,7 +196,9 @@ credit-purchase-message =
     💵 <b>Price:</b> { $pricePerCredit } HKD per credit
     
     📝 <b>About Credits:</b>
-    1 credit = 1 doc check = 20 HKD
+    1 credit = 20 HKD
+    • Turnitin: 2 credits per document
+    • Originality: it is calculated based on word counts of your doc
     
     Choose how many credits you want to purchase:
 
@@ -257,7 +263,7 @@ upload-success-credit =
     🆔 <b>Upload ID:</b> #{ $uploadId }
     💳 <b>Remaining Credits:</b> { $remainingCredit }
     
-    Your document has been uploaded and 1 credit has been deducted. Your essay is now being processed.
+    Your document has been uploaded and credits have been deducted. Your essay is now being processed.
 
 upload-success-button-profile = 👤 Profile
 upload-success-button-home = 🏠 Home

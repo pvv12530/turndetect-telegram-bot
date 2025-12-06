@@ -463,8 +463,9 @@ feature.on('message:document', logHandle('message-document'), async (ctx) => {
 
     // Handle other services (existing workflow)
     // Check user credit for non-originality services
+    // Turnitin = 2 credits per document
     const currentCredit = Number(user.credit) || 0
-    const requiredCredit = 1
+    const requiredCredit = 2
 
     if (currentCredit < requiredCredit) {
       const keyboard = new InlineKeyboard()

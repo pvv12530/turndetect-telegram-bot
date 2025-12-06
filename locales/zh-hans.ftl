@@ -142,8 +142,10 @@ help-message =
     📦 最大 20MB
     
     <b>積分系統：</b>
-    💳 1 積分 = 1 次文檔檢查 = 20 港幣
-    每次文檔上傳和分析需要 1 積分。您可以從個人資料購買積分。
+    💳 1 積分 = 20 港幣
+    • Turnitin：每份文檔 2 積分
+    • Originality：根據文檔字數計算
+    您可以從個人資料購買積分。
     
     <b>處理時間：</b>
     ⏱️ 支付後 5-10 分鐘
@@ -168,7 +170,9 @@ profile-message =
     
     💳 <b>剩餘積分：</b> { $credit }
     
-    使用積分上傳和分析您的論文。每次上傳需要 1 積分。
+    使用積分上傳和分析您的論文。
+    • Turnitin：每份文檔 2 積分
+    • Originality：根據文檔字數計算
 
 profile-button-buy-credit = 💰 購買積分
 profile-button-back-home = 🏠 返回首頁
@@ -192,7 +196,9 @@ credit-purchase-message =
     💵 <b>價格：</b> { $pricePerCredit } 港幣/積分
     
     📝 <b>關於積分：</b>
-    1 積分 = 1 次文檔檢查 = 20 港幣
+    1 積分 = 20 港幣
+    • Turnitin：每份文檔 2 積分
+    • Originality：根據文檔字數計算
     
     選擇您要購買的積分數量：
 
@@ -257,7 +263,7 @@ upload-success-credit =
     🆔 <b>上傳 ID：</b> #{ $uploadId }
     💳 <b>剩餘積分：</b> { $remainingCredit }
     
-    您的文檔已上傳，已扣除 1 積分。您的論文正在處理中。
+    您的文檔已上傳，已扣除積分。您的論文正在處理中。
 
 upload-success-button-profile = 👤 個人資料
 upload-success-button-home = 🏠 首頁
