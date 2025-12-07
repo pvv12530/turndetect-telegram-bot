@@ -47,7 +47,7 @@
     "word-extractor": "^1.0.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "4.12.0",
+    "@antfu/eslint-config": "6.4.2",
     "@types/node": "^22.15.21",
     "@types/word-extractor": "^1.0.6",
     "eslint": "^9.27.0",
