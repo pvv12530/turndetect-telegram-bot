@@ -153,6 +153,9 @@ export interface Database {
           payment_session_id: string | null
           created_at: string
           updated_at: string
+          submission_id: string | null
+          note: string | null
+          account_tunnel_id: string | null
         }
         Insert: {
           id?: number
@@ -166,6 +169,9 @@ export interface Database {
           payment_session_id?: string | null
           created_at?: string
           updated_at?: string
+          submission_id?: string | null
+          note?: string | null
+          account_tunnel_id?: string | null
         }
         Update: {
           id?: number
@@ -179,6 +185,9 @@ export interface Database {
           payment_session_id?: string | null
           created_at?: string
           updated_at?: string
+          submission_id?: string | null
+          note?: string | null
+          account_tunnel_id?: string | null
         }
         Relationships: [
           {
@@ -186,6 +195,13 @@ export interface Database {
             columns: ['user_id']
             isOneToOne: false
             referencedRelation: 'users'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'essay_uploads_account_tunnel_id_fkey'
+            columns: ['account_tunnel_id']
+            isOneToOne: false
+            referencedRelation: 'account_tunnels'
             referencedColumns: ['id']
           },
         ]
@@ -323,6 +339,24 @@ export interface Database {
             referencedColumns: ['id']
           },
         ]
+      }
+      account_tunnels: {
+        Row: {
+          id: string
+          created_at: string | null
+          status: string
+        }
+        Insert: {
+          id?: string
+          created_at?: string | null
+          status?: string
+        }
+        Update: {
+          id?: string
+          created_at?: string | null
+          status?: string
+        }
+        Relationships: []
       }
     }
     Views: Record<string, never>
