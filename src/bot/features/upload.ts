@@ -1,6 +1,7 @@
 import type { Context } from '#root/bot/context.js'
 import { Buffer } from 'node:buffer'
 import { logHandle } from '#root/bot/helpers/logging.js'
+import { apiClient } from '#root/services/api.client.js'
 import { Composer, InlineKeyboard } from 'grammy'
 import mammoth from 'mammoth'
 import WordExtractor from 'word-extractor'
@@ -87,6 +88,60 @@ async function extractTextFromDoc(arrayBuffer: ArrayBuffer): Promise<string> {
   }
   catch (error) {
     throw new Error(`Failed to extract text from DOC: ${error instanceof Error ? error.message : 'Unknown error'}`)
+  }
+}
+
+// Helper function to log credit usage via bulk API
+async function logCreditUsageBulk(
+  creditUsageRecords: Array<{
+    user_id: number
+    essay_upload_id?: number | null
+    credits_used: number
+    description?: string | null
+  }>,
+  logger?: any,
+): Promise<void> {
+  if (!creditUsageRecords || creditUsageRecords.length === 0) {
+    return
+  }
+
+  try {
+    const response = await apiClient.post('/api/credit-usage/bulk', {
+      credit_usage: creditUsageRecords.map(record => ({
+        user_id: record.user_id,
+        essay_upload_id: record.essay_upload_id || null,
+        credits_used: record.credits_used,
+        description: record.description?.trim() || null,
+      })),
+    })
+
+    if (logger) {
+      logger.info({
+        count: response.data.count,
+        recordsInserted: response.data.data?.length || 0,
+      }, 'Credit usage logged successfully via bulk API')
+    }
+  }
+  catch (error: any) {
+    if (logger) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        logger.warn({
+          status: error.response.status,
+          statusText: error.response.statusText,
+          error: error.response.data,
+        }, 'Failed to log credit usage to bulk API')
+      }
+      else if (error.request) {
+        // The request was made but no response was received
+        logger.error({ error: error.message }, 'No response received from credit usage bulk API')
+      }
+      else {
+        // Something happened in setting up the request that triggered an Error
+        logger.error({ error: error.message }, 'Error calling credit usage bulk API')
+      }
+    }
   }
 }
 
@@ -532,18 +587,18 @@ feature.on('message:document', logHandle('message-document'), async (ctx) => {
     // Deduct credit
     await ctx.userService.deductCredit(ctx.session.userId, requiredCredit)
 
-    // Log credit usage
-    const { CreditUsageService } = await import('#root/db/services/credit-usage.service.js')
-    const { createSupabaseClient } = await import('#root/db/supabase.js')
-    const supabase = createSupabaseClient(ctx.config)
-    const creditUsageService = new CreditUsageService(supabase)
-
-    await creditUsageService.create({
-      user_id: ctx.session.userId,
-      essay_upload_id: upload.id,
-      credits_used: requiredCredit,
-      description: `Document upload: ${fileName}`,
-    })
+    // Log credit usage via bulk API
+    await logCreditUsageBulk(
+      [
+        {
+          user_id: ctx.session.userId,
+          essay_upload_id: upload.id,
+          credits_used: requiredCredit,
+          description: `Document upload: ${fileName}`,
+        },
+      ],
+      ctx.logger,
+    )
 
     // Delete processing message
     await ctx.api.deleteMessage(ctx.chat.id, processingMsg.message_id)
@@ -773,18 +828,18 @@ feature.callbackQuery(/^originality_confirm_(\d+)$/, logHandle('callback-origina
     // Deduct credits
     await ctx.userService.deductCredit(ctx.session.userId, requiredCredits)
 
-    // Log credit usage
-    const { CreditUsageService } = await import('#root/db/services/credit-usage.service.js')
-    const { createSupabaseClient: createSupabaseClient2 } = await import('#root/db/supabase.js')
-    const supabase2 = createSupabaseClient2(ctx.config)
-    const creditUsageService = new CreditUsageService(supabase2)
-
-    await creditUsageService.create({
-      user_id: ctx.session.userId,
-      essay_upload_id: uploadId,
-      credits_used: requiredCredits,
-      description: `Originality.ai analysis: ${upload.file_name}`,
-    })
+    // Log credit usage via bulk API
+    await logCreditUsageBulk(
+      [
+        {
+          user_id: ctx.session.userId,
+          essay_upload_id: uploadId,
+          credits_used: requiredCredits,
+          description: `Originality.ai analysis: ${upload.file_name}`,
+        },
+      ],
+      ctx.logger,
+    )
 
     // Update upload status
     await ctx.essayService.updateStatus(uploadId, 'completed')

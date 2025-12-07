@@ -15,6 +15,7 @@ const baseConfigSchema = v.object({
   stripeCurrency: v.optional(v.string(), 'usd'),
   botUsername: v.optional(v.string(), 'your_bot'),
   backendApiUrl: v.optional(v.pipe(v.string(), v.url())),
+  apiBaseUrl: v.optional(v.pipe(v.string(), v.url()), 'https://turnitin-admin.vercel.app'),
   originalityApiKey: v.optional(v.string()),
 })
 
