@@ -621,7 +621,7 @@ feature.on('message:document', logHandle('message-document'), async (ctx) => {
 
       // Reset analyzing status
       await ctx.userService.setAnalyzingStatus(ctx.session.userId, false)
-      ctx.session.selectedServiceButtonId = undefined
+      // Keep selectedServiceButtonId so subsequent files can use the same service
 
       // Create keyboard
       const keyboard = new InlineKeyboard()
@@ -655,7 +655,7 @@ feature.on('message:document', logHandle('message-document'), async (ctx) => {
     else {
       // Unknown service - reset analyzing status
       await ctx.userService.setAnalyzingStatus(ctx.session.userId, false)
-      ctx.session.selectedServiceButtonId = undefined
+      // Keep selectedServiceButtonId so subsequent files can use the same service
       throw new Error('Unknown service type')
     }
   }
@@ -866,11 +866,11 @@ feature.callbackQuery(/^originality_confirm_(\d+)$/, logHandle('callback-origina
     const updatedUser = await ctx.userService.findById(ctx.session.userId)
     const remainingCredit = Number(updatedUser?.credit) || 0
 
-    // Clear session
+    // Clear session (but keep selectedServiceButtonId for subsequent uploads)
     ctx.session.originalityUploadId = undefined
     ctx.session.originalityWordCount = undefined
     ctx.session.originalityCreditsRequired = undefined
-    ctx.session.selectedServiceButtonId = undefined
+    // Keep selectedServiceButtonId so subsequent files can use the same service
 
     // Create keyboard
     const keyboard = new InlineKeyboard()
@@ -1159,11 +1159,11 @@ async function handleOriginalityPaymentSuccess(ctx: Context, uploadId: number, u
     // Reset analyzing status
     await ctx.userService.setAnalyzingStatus(ctx.session.userId, false)
 
-    // Clear session
+    // Clear session (but keep selectedServiceButtonId for subsequent uploads)
     ctx.session.originalityUploadId = undefined
     ctx.session.originalityWordCount = undefined
     ctx.session.originalityCreditsRequired = undefined
-    ctx.session.selectedServiceButtonId = undefined
+    // Keep selectedServiceButtonId so subsequent files can use the same service
 
     // Get updated credit balance
     const updatedUser = await ctx.userService.findById(ctx.session.userId)
@@ -1264,6 +1264,12 @@ feature.callbackQuery('help', logHandle('callback-help'), async (ctx) => {
 // Handle home button
 feature.callbackQuery('home', logHandle('callback-home'), async (ctx) => {
   await ctx.answerCallbackQuery()
+
+  // Clear service selection when going home
+  ctx.session.selectedServiceButtonId = undefined
+  ctx.session.originalityUploadId = undefined
+  ctx.session.originalityWordCount = undefined
+  ctx.session.originalityCreditsRequired = undefined
 
   // Query services from database
   let services: Array<{ id: string, name: string | null, status: boolean | null, service_button_id: string | null }> = []
