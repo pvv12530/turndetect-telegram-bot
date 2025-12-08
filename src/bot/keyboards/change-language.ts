@@ -47,7 +47,7 @@ export async function createChangeLanguageKeyboard(ctx: Context) {
     // Handle language codes that ISO6391 might not recognize
     let nativeName: string
     if (code === 'zh-hans') {
-      nativeName = '简体中文'
+      nativeName = '繁體中文'
     }
     else {
       nativeName = ISO6391.getNativeName(code) || code
