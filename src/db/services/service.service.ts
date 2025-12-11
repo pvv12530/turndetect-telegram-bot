@@ -80,4 +80,22 @@ export class ServiceService {
 
     return data as ServiceRow
   }
+
+  async updateByName(name: string, updates: ServiceUpdate): Promise<ServiceRow | null> {
+    const { data, error } = await this.supabase
+      .from('services')
+      .update({
+        ...updates,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('name', name)
+      .select()
+      .maybeSingle()
+
+    if (error) {
+      throw error
+    }
+
+    return data as ServiceRow | null
+  }
 }
