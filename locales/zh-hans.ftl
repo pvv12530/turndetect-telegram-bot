@@ -471,3 +471,91 @@ feedback-error =
     
     請重試，如果問題持續存在，請聯繫客服。
 
+## Course Request Feature
+
+course-service-introduction =
+    📚 <b>課程材料請求服務</b>
+    
+    我們很高興為您提供全面的課程材料和教育資源，以滿足您的學術需求。
+    
+    只需描述您需要什麼 - 無論是講義、學習指南、作業範例還是任何其他課程相關材料。我們會仔細審查您的請求，並為您提供最相關和優質的資源。
+    
+    💡 <b>請求中應包含的內容：</b>
+    • 課程名稱或學科領域
+    • 您需要的具體主題或章節
+    • 您尋求的材料類型
+    • 任何特定要求或偏好
+    
+    請回覆您的詳細請求，我們會記錄下來。一旦我們找到合適的材料，我們會直接在此回覆您。
+
+course-request-empty =
+    ⚠️ <b>請求為空</b>
+    
+    請提供您需要的課程材料的詳細信息。
+
+course-request-confirmation =
+    ✅ <b>請求已收到！</b>
+    
+    感謝您的課程材料請求。我們已仔細記錄了您提供的所有詳細信息。
+    
+    我們的團隊將審查您的請求，並在我們廣泛的數據庫中搜索最相關和優質的材料以滿足您的需求。我們會在8小時內直接在此回覆您，提供課程材料或更新您請求的狀態。
+    
+    您的請求現已在我們的隊列中，我們會盡快回覆您。同時，請完成付款以完成您的請求。
+
+course-request-error =
+    ❌ <b>創建課程請求失敗</b>
+    
+    請重試，如果問題持續存在，請聯繫客服。
+
+course-request-payment-prompt =
+    💳 <b>需要付款</b>
+    
+    為處理您的課程材料請求，請完成付款：
+    
+    <b>所需積分：</b> { $creditsRequired }
+    <b>您當前的積分：</b> { $currentCredits }
+    
+    請使用下方按鈕繼續付款。
+
+course-request-pay-with-credits-button = 💳 使用積分付款
+course-request-buy-credits-button = 💰 購買積分
+
+course-request-not-found =
+    ❌ <b>找不到課程請求</b>
+    
+    找不到請求的課程請求。
+
+course-request-already-paid =
+    ✅ <b>付款已處理</b>
+    
+    此課程請求（ID：{ $requestId }）已經付款。我們會在8小時內回覆您的請求。
+
+course-request-payment-success =
+    ✅ <b>付款成功！</b>
+    
+    感謝您的付款。您的課程材料請求已成功處理。
+    
+    <b>請求ID：</b> { $requestId }
+    
+    我們會審查您的請求，並在8小時內直接在此回覆您，提供課程材料或更新您請求的狀態。請保留此請求ID以備記錄。
+
+course-request-payment-error =
+    ❌ <b>付款處理錯誤</b>
+    
+    處理您的付款時發生錯誤。如果您已被扣款，請聯繫客服。
+
+course-request-payment-cancelled =
+    ❌ <b>付款已取消</b>
+    
+    您的付款已被取消。您可以稍後重試付款以完成您的課程請求。
+
+course-request-insufficient-credits =
+    ⚠️ <b>積分不足</b>
+    
+    您沒有足夠的積分來完成此付款。請購買更多積分。
+
+course-request-credits-added =
+    ✅ <b>積分添加成功！</b>
+    
+    您的積分已添加到您的帳戶。您現在可以繼續您的課程請求付款。
+

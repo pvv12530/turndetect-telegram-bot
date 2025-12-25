@@ -1,4 +1,5 @@
 import type { Config } from '#root/config.js'
+import type { CourseRequestService } from '#root/db/services/course-request.service.js'
 import type { EssayService } from '#root/db/services/essay.service.js'
 import type { FeedbackService } from '#root/db/services/feedback.service.js'
 import type { OriginalityLogService } from '#root/db/services/originality-log.service.js'
@@ -22,6 +23,8 @@ export interface SessionData {
   originalityUploadId?: number
   originalityWordCount?: number
   originalityCreditsRequired?: number
+  waitingForCourseRequest?: boolean
+  courseRequestId?: number
 }
 
 interface ExtendedContextFlavor {
@@ -34,6 +37,7 @@ interface ExtendedContextFlavor {
   stripeService: StripeService
   originalityService?: OriginalityService
   originalityLogService: OriginalityLogService
+  courseRequestService: CourseRequestService
 }
 
 export type Context = ParseModeFlavor<
