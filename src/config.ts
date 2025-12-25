@@ -17,6 +17,7 @@ const baseConfigSchema = v.object({
   backendApiUrl: v.optional(v.pipe(v.string(), v.url())),
   apiBaseUrl: v.optional(v.pipe(v.string(), v.url()), 'https://turnitin-admin.vercel.app'),
   originalityApiKey: v.optional(v.string()),
+  enableMaintenanceCheckerSchedule: v.optional(v.pipe(v.string(), v.transform(JSON.parse), v.boolean()), 'true'),
 })
 
 const configSchema = v.variant('botMode', [

@@ -124,15 +124,20 @@ function startMaintenanceChecker(): ScheduledTask {
   })
 
   // Schedule to run every 10 minutes (cron: */10 * * * *)
-  const job = cron.schedule('*/10 * * * *', async () => {
-    await maintenanceChecker.checkAndUpdateMaintenanceStatus()
-  }, {
-    timezone: 'UTC',
-  })
+  let job: ScheduledTask | null = null
+  if (config.enableMaintenanceCheckerSchedule) {
+    job = cron.schedule('*/10 * * * *', async () => {
+      await maintenanceChecker.checkAndUpdateMaintenanceStatus()
+    }, {
+      timezone: 'UTC',
+    })
+    logger.info('Maintenance checker cron job started (runs every 10 minutes)')
+  }
+  else {
+    logger.info('Maintenance checker cron job scheduling is disabled')
+  }
 
-  logger.info('Maintenance checker cron job started (runs every 10 minutes)')
-
-  return job
+  return job as ScheduledTask
 }
 
 function onShutdown(cleanUp: () => Promise<void>) {
