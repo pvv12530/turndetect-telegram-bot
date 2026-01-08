@@ -358,6 +358,53 @@ export interface Database {
         }
         Relationships: []
       }
+      course_request: {
+        Row: {
+          id: number
+          user_id: number | null
+          status: string | null
+          material_id: string | null
+          resolved_at: string | null
+          reply_text: string | null
+          created_at: string
+          user_request: string | null
+          payment_status: string | null
+          credit_used: number | null
+        }
+        Insert: {
+          id?: number
+          user_id?: number | null
+          status?: string | null
+          material_id?: string | null
+          resolved_at?: string | null
+          reply_text?: string | null
+          created_at?: string
+          user_request?: string | null
+          payment_status?: string | null
+          credit_used?: number | null
+        }
+        Update: {
+          id?: number
+          user_id?: number | null
+          status?: string | null
+          material_id?: string | null
+          resolved_at?: string | null
+          reply_text?: string | null
+          created_at?: string
+          user_request?: string | null
+          payment_status?: string | null
+          credit_used?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'course_request_user_id_fkey'
+            columns: ['user_id']
+            isOneToOne: false
+            referencedRelation: 'users'
+            referencedColumns: ['id']
+          },
+        ]
+      }
     }
     Views: Record<string, never>
     Functions: Record<string, never>

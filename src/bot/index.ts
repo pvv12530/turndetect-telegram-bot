@@ -16,6 +16,7 @@ import { restoreLanguage } from '#root/bot/middlewares/restore-language.js'
 import { session } from '#root/bot/middlewares/session.js'
 import { updateLogger } from '#root/bot/middlewares/update-logger.js'
 import { userSession } from '#root/bot/middlewares/user-session.js'
+import { CourseRequestService } from '#root/db/services/course-request.service.js'
 import { EssayService } from '#root/db/services/essay.service.js'
 import { FeedbackService } from '#root/db/services/feedback.service.js'
 import { OriginalityLogService } from '#root/db/services/originality-log.service.js'
@@ -55,6 +56,7 @@ export function createBot(token: string, dependencies: Dependencies, botConfig?:
   const serviceService = new ServiceService(supabase)
   const stripeService = new StripeService(config)
   const originalityLogService = new OriginalityLogService(supabase)
+  const courseRequestService = new CourseRequestService(supabase)
 
   // Initialize OriginalityService only if API key is provided
   let originalityService: OriginalityService | null = null
@@ -78,6 +80,7 @@ export function createBot(token: string, dependencies: Dependencies, botConfig?:
     ctx.serviceService = serviceService
     ctx.stripeService = stripeService
     ctx.originalityLogService = originalityLogService
+    ctx.courseRequestService = courseRequestService
     // Only set originalityService if it was successfully initialized
     if (originalityService) {
       ctx.originalityService = originalityService

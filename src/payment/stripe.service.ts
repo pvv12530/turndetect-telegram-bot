@@ -104,6 +104,45 @@ export class StripeService {
     }
   }
 
+  async createCourseRequestPaymentLink(options: {
+    customerId: string
+    courseRequestId: number
+    amount: number
+    currency: string
+    botUsername?: string
+  }): Promise<{ url: string, sessionId: string }> {
+    const botUsername = options.botUsername || 'your_bot'
+    const session = await this.stripe.checkout.sessions.create({
+      customer: options.customerId,
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: options.currency,
+            product_data: {
+              name: 'Course Material Request',
+              description: 'Request for course materials and resources (5 credits)',
+            },
+            unit_amount: options.amount, // Amount in cents
+          },
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      metadata: {
+        type: 'course_request',
+        courseRequestId: options.courseRequestId.toString(),
+      },
+      success_url: `https://t.me/${botUsername}?start=course_request_payment_success_${options.courseRequestId}`,
+      cancel_url: `https://t.me/${botUsername}?start=course_request_payment_cancel_${options.courseRequestId}`,
+    })
+
+    return {
+      url: session.url || '',
+      sessionId: session.id,
+    }
+  }
+
   async getSession(sessionId: string): Promise<Stripe.Checkout.Session> {
     return this.stripe.checkout.sessions.retrieve(sessionId)
   }

@@ -470,3 +470,81 @@ feedback-error =
     ❌ <b>Failed to save feedback</b>
     
     Please try again or contact support if the problem persists.
+
+## Course Request Feature
+
+course-service-introduction =
+    📚 <b>Course Material Request Service</b>
+    
+    We're delighted to offer you comprehensive course materials and educational resources tailored to your academic needs.
+    
+    Simply describe what you're looking for - whether it's lecture notes, study guides, assignment samples, or any other course-related materials. We'll carefully review your request and provide you with the most relevant and high-quality resources available.
+    
+    💡 <b>What to include in your request:</b>
+    • Course name or subject area
+    • Specific topics or chapters you need
+    • Type of materials you're seeking
+    • Any particular requirements or preferences
+    
+    Please reply with your detailed request, and we'll make a note of it. Once we find suitable materials, we'll respond directly here with your resources.
+
+course-request-empty =
+    ⚠️ <b>Empty Request</b>
+    
+    Please provide details about the course materials you need.
+
+course-request-confirmation =
+    ✅ <b>Request Received!</b>
+    
+    Thank you for your course material request. We've carefully noted all the details you've provided.
+    
+    Our team will review your request and search our extensive database for the most relevant and high-quality materials that match your needs. We'll respond to you directly here within 8 hours with the course materials or an update on the status of your request.
+    
+    Your request is now in our queue, and we'll make sure to get back to you as soon as possible. In the meantime, please proceed with the payment to complete your request.
+
+course-request-error =
+    ❌ <b>Failed to create course request</b>
+    
+    Please try again or contact support if the problem persists.
+
+course-request-payment-prompt =
+    💳 <b>Payment Required</b>
+    
+    To process your course material request, please complete the payment:
+    
+    <b>Credits required:</b> { $creditsRequired }
+    <b>Your current credits:</b> { $currentCredits }
+    
+    Please use the button below to proceed with payment.
+
+course-request-pay-with-credits-button = 💳 Pay with Credits
+course-request-buy-credits-button = 💰 Buy Credits
+
+course-request-not-found =
+    ❌ <b>Course request not found</b>
+    
+    The requested course request could not be found.
+
+course-request-already-paid =
+    ✅ <b>Payment Already Processed</b>
+    
+    This course request (ID: { $requestId }) has already been paid for. We'll respond to your request within 8 hours.
+
+course-request-payment-success =
+    ✅ <b>Payment Successful!</b>
+    
+    Thank you for your payment. Your course material request has been successfully processed.
+    
+    <b>Request ID:</b> { $requestId }
+    
+    We'll review your request and respond to you directly here within 8 hours with the course materials or an update on the status of your request. Please keep this request ID for your records.
+
+course-request-payment-error =
+    ❌ <b>Payment Processing Error</b>
+    
+    There was an error processing your payment. Please contact support if you've been charged.
+
+course-request-payment-cancelled =
+    ❌ <b>Payment Cancelled</b>
+    
+    Your payment was cancelled. You can retry the payment later to complete your course request.
