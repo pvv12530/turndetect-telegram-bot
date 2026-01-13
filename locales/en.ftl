@@ -21,13 +21,22 @@ welcome =
     🔍 Highlights parts that use AI/plagiarism
     📋 Supported formats: docx. (Microsoft Word file)
 
-    Turnitin Feature: We use the latest system analysis. Analysis time may be longer as the Turnitin system frequently crashes/updates
-    Originality AI: This system is stricter than Turnitin, generates reports faster, and is suitable for students who use AI to write essays and want to continuously reduce AI%
+    1. Turnitin Report Check  
+    -Uses the latest Turnitin system, providing plagiarism similarity checks and AI detection reports
+    -Scheduled daily checks: 15:00/18:00/21:00/23:59 
+    -Occasional unscheduled checks [If there are too many checks, we will check earlier for students]
+
+
+    2. Originality AI
+     -This system is stricter than Turnitin, generates reports faster, suitable for students who use AI to write essays and want to continuously reduce AI%
+
+    3. Course Sources Reference Service  
+     -Based on your requested Course Code, we will help you find relevant Sources (E.g. A grade Sample Essay/Past Paper/Sources...)
 
     🚀 <b>How It Works:</b>
 
     1️⃣ Upload your essay
-    2️⃣ Wait 30 munites - 3 hours for analysis
+    2️⃣ Wait around 30 minutes
     3️⃣ Receive your report
 
     👇 <b>Ready?</b>

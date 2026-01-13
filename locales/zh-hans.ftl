@@ -21,13 +21,22 @@ welcome =
     🔍 會Highlight 有用AI/抄襲的部分
     📋 支援格式：docx.  (Microsoft word file)
 
-    Turnitin功能: 我們使用最新的系統分析，分析時間可能較長，因為Turnitin系統經常死機/更新]
-    Originality AI:  這系統比Turnitin系統更嚴緊，出Report 時間較快，合適於用AI寫文章，想不斷減AI的同學使用]
+    1. Turnitin 報告檢查  
+    -採用最新 Turnitin 系統，提供抄襲相率檢查與 AI 檢測報告
+    -每天定時檢查: 15:00/18:00/21:00/23:59 
+    -有時會不定時檢查 [如果檢查量過多，我們會提早為同學檢查]
+
+
+    2. Originality AI
+     -這系統比Turnitin系統更嚴緊，出Report 時間較快，合適於用AI寫文章，想不斷減AI的同學使用]
+
+    3. Course Sources 參考資料服務  
+     -根據您要求的Course Code, 我們會幫忙找尋相關Sources (E.g A grade Sample Essay/Past Paper/Sources...)
 
     🚀 使用方法：
 
     1️⃣ 上傳您的論文
-    2️⃣ 等待 30 分鐘 - 3 小時進行分析
+    2️⃣ 等待 30 分鐘左右
     3️⃣ 接收您的報告
 
     👇 準備好了嗎？
