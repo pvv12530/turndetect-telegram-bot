@@ -642,6 +642,60 @@ feature.on('message:document', logHandle('message-document'), async (ctx) => {
         },
       )
 
+      // Send email notification
+      try {
+        // Get user name
+        const userName = updatedUser?.first_name
+          ? `${updatedUser.first_name}${updatedUser.last_name ? ` ${updatedUser.last_name}` : ''}`
+          : updatedUser?.username || `User ${ctx.session.userId}`
+
+        // Get file download link
+        const fileDownloadLink = await ctx.essayService.getPublicUrl('essays', upload.file_path)
+
+        const emailSubject = `Document Analysis Request - ${fileName}`
+        const emailHtml = `
+          <h2>${userName} uploaded ${fileName}</h2>
+          <h3>File Details:</h3>
+          <p><strong>File Name:</strong> ${fileName}</p>
+          <p><strong>File Size:</strong> ${formattedSize}</p>
+          <p><strong>Upload ID:</strong> ${upload.id}</p>
+          <h3>Download file from here:</h3>
+          <p><a href="${fileDownloadLink}">${fileDownloadLink}</a></p>
+        `
+        const emailText = `
+          ${userName} uploaded ${fileName}
+
+          File Details:
+          File Name: ${fileName}
+          File Size: ${formattedSize}
+          Upload ID: ${upload.id}
+
+          Download file from here:
+${fileDownloadLink}
+        `.trim()
+
+        await apiClient.post('/api/email/send', {
+          to: 'clever.fox.w@gmail.com',
+          subject: emailSubject,
+          html: emailHtml,
+          text: emailText,
+          from: 'wildsharp07@gmail.com',
+        })
+
+        ctx.logger.info({
+          uploadId: upload.id,
+          userId: ctx.session.userId,
+        }, 'Email notification sent successfully')
+      }
+      catch (error) {
+        // Log error but don't fail the upload process
+        ctx.logger.error({
+          error,
+          uploadId: upload.id,
+          userId: ctx.session.userId,
+        }, 'Failed to send email notification')
+      }
+
       ctx.logger.info({
         uploadId: upload.id,
         userId: ctx.session.userId,
