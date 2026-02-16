@@ -156,6 +156,16 @@ help-message =
     • Originality: it is calculated based on word counts of your doc
     You can purchase credits from your profile.
     
+    <b>How word count is calculated:</b>
+    📝 Word count = total number of words in your document (same as in Word).
+    In Word: Review → Word Count to see the count.
+    
+    <b>Credit deduction (Originality):</b>
+    • 0–3000 words = 1 credit
+    • 3001–6000 words = 2 credits
+    • 6001–9000 words = 3 credits
+    • and so on…
+    
     <b>Processing Time:</b>
     ⏱️ 30 munites - 3 hours after payment
     
