@@ -28,10 +28,15 @@ welcome =
 
 
     2. Originality AI
-     -這系統比Turnitin系統更嚴緊，出Report 時間較快，合適於用AI寫文章，想不斷減AI的同學使用]
+    -這系統比Turnitin系統更嚴緊，出Report 時間較快，合適於用AI寫文章，想不斷減AI的同學使用]
 
     3. Course Sources 參考資料服務  
-     -根據您要求的Course Code, 我們會幫忙找尋相關Sources (E.g A grade Sample Essay/Past Paper/Sources...)
+    -根據您要求的Course Code, 我們會幫忙找尋相關Sources (E.g A grade Sample Essay/Past Paper/Sources...)
+    想搵A Grade Sample, 
+    請聯絡 @homework_professor_discussion
+
+    4. 想有人幫手減Ai/ 代做功課
+    請聯絡 @homework_professor
 
     🚀 使用方法：
 
@@ -40,7 +45,7 @@ welcome =
     3️⃣ 接收您的報告
 
     👇 準備好了嗎？
-    點擊「上傳論文」或直接發送您的檔案！
+    點擊「上傳論文」或直接發送您的檔案
 
 welcome-button-upload = 📤 上傳論文
 welcome-button-profile = 👤 個人資料

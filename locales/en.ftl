@@ -10,11 +10,11 @@ setcommands =
 ## Welcome Feature
 
 welcome =
-    📝 <b>Welcome to EssayLab_Bot Essay Analyzer!</b>
+    📝 Welcome to EssayLab_Bot Essay Analyzer!
 
     Check your essays for plagiarism and AI issues using Turnitin/Originality technology.
 
-    ✨ <b>What We Offer:</b>
+    ✨ What We Offer:
 
     📊 AI check reports
     📈 Plagiarism reports
@@ -28,18 +28,23 @@ welcome =
 
 
     2. Originality AI
-     -This system is stricter than Turnitin, generates reports faster, suitable for students who use AI to write essays and want to continuously reduce AI%
+    -This system is stricter than Turnitin, generates reports faster, suitable for students who use AI to write essays and want to continuously reduce AI%
 
     3. Course Sources Reference Service  
-     -Based on your requested Course Code, we will help you find relevant Sources (E.g. A grade Sample Essay/Past Paper/Sources...)
+    -Based on your requested Course Code, we will help you find relevant Sources (E.g. A grade Sample Essay/Past Paper/Sources...)
+    Looking for A Grade Sample?
+    Contact @homework_professor_discussion
 
-    🚀 <b>How It Works:</b>
+    4. Need help reducing AI / homework assistance?
+    Contact @homework_professor
+
+    🚀 How It Works:
 
     1️⃣ Upload your essay
     2️⃣ Wait around 30 minutes
     3️⃣ Receive your report
 
-    👇 <b>Ready?</b>
+    👇 Ready?
     Click "Upload Essay" or send your file directly!
 
 welcome-button-upload = 📤 Upload Essay
