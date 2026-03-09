@@ -30,13 +30,8 @@ welcome =
     2. Originality AI
     -This system is stricter than Turnitin, generates reports faster, suitable for students who use AI to write essays and want to continuously reduce AI%
 
-    3. Course Sources Reference Service  
-    -Based on your requested Course Code, we will help you find relevant Sources (E.g. A grade Sample Essay/Past Paper/Sources...)
-    Looking for A Grade Sample?
-    Contact @homework_professor_discussion
-
-    4. Need help reducing AI / homework assistance?
-    Contact @homework_professor
+    3. Need help reducing AI / homework assistance?
+    Contact @Prof_writerchannel
 
     🚀 How It Works:
 
