@@ -72,6 +72,22 @@ function createConfigFromEnvironment() {
     [K in keyof T as CamelCase<string & K>]: T[K] extends object ? KeysToCamelCase<T[K]> : T[K]
   }
 
+  function validateJsonEnvVar(envKey: string) {
+    const raw = process.env[envKey]
+    if (raw === undefined)
+      return
+    try {
+      JSON.parse(raw)
+    }
+    catch (error) {
+      const shown = raw.length > 250 ? `${raw.slice(0, 250)}…` : raw
+      throw new Error(
+        `Invalid config: ${envKey} must be valid JSON, but got: ${shown}`,
+        { cause: error },
+      )
+    }
+  }
+
   function toCamelCase(str: string): string {
     return str.toLowerCase().replace(/_([a-z])/g, (_match, p1) => p1.toUpperCase())
   }
@@ -95,6 +111,12 @@ function createConfigFromEnvironment() {
   }
 
   try {
+    // These are parsed via JSON.parse in the schema; fail fast with a clear error.
+    validateJsonEnvVar('DEBUG')
+    validateJsonEnvVar('BOT_ALLOWED_UPDATES')
+    validateJsonEnvVar('BOT_ADMINS')
+    validateJsonEnvVar('ENABLE_MAINTENANCE_CHECKER_SCHEDULE')
+
     // @ts-expect-error create config from environment variables
     const config = createConfig(convertKeysToCamelCase(process.env))
 
