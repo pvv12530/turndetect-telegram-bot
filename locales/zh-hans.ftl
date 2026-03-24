@@ -21,13 +21,13 @@ welcome =
     🔍 會Highlight 有用AI/抄襲的部分
     📋 支援格式：docx.  (Microsoft word file)
 
-    1. Turnitin 報告檢查  
+    1. Turnitin 報告檢查  [$30/次]
     -採用最新 Turnitin 系統，提供抄襲相率檢查與 AI 檢測報告
     -每天定時檢查: 15:00/18:00/21:00/23:59 
     -有時會不定時檢查 [如果檢查量過多，我們會提早為同學檢查]
 
 
-    2. Originality AI
+    2. Originality AI [暫停服務/聯絡客服查詢]
     -這系統比Turnitin系統更嚴緊，出Report 時間較快，合適於用AI寫文章，想不斷減AI的同學使用]
 
     3. 想有人幫手減Ai/ 代做功課服務
@@ -152,7 +152,7 @@ help-message =
     
     <b>積分系統：</b>
     💳 1 積分 = 30 港幣
-    • Turnitin：每份文檔 2 積分
+    • Turnitin：每份文檔 1 積分
     • Originality：根據文檔字數計算
     您可以從個人資料購買積分。
     
@@ -190,7 +190,7 @@ profile-message =
     💳 <b>剩餘積分：</b> { $credit }
     
     使用積分上傳和分析您的論文。
-    • Turnitin：每份文檔 2 積分
+    • Turnitin：每份文檔 1 積分
     • Originality：根據文檔字數計算
 
 profile-button-buy-credit = 💰 購買積分
@@ -216,7 +216,7 @@ credit-purchase-message =
     
     📝 <b>關於積分：</b>
     1 積分 = 30 港幣
-    • Turnitin：每份文檔 2 積分
+    • Turnitin：每份文檔 1 積分
     • Originality：根據文檔字數計算
     
     選擇您要購買的積分數量：

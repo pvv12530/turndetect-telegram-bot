@@ -14,33 +14,34 @@ welcome =
 
     Check your essays for plagiarism and AI issues using Turnitin/Originality technology.
 
-    ✨ What We Offer:
+    ✨ What we offer:
 
     📊 AI check reports
     📈 Plagiarism reports
-    🔍 Highlights parts that use AI/plagiarism
-    📋 Supported formats: docx. (Microsoft Word file)
+    🔍 Highlights sections that involve AI or plagiarism
+    📋 Supported format: docx (Microsoft Word file)
 
-    1. Turnitin Report Check  
-    -Uses the latest Turnitin system, providing plagiarism similarity checks and AI detection reports
-    -Scheduled daily checks: 15:00/18:00/21:00/23:59 
-    -Occasional unscheduled checks [If there are too many checks, we will check earlier for students]
+    1. Turnitin report check [$30 per submission]
+    -Uses the latest Turnitin system, with plagiarism similarity checks and AI detection reports
+    -Scheduled daily processing: 15:00 / 18:00 / 21:00 / 23:59
+    -We may also run extra batches outside these times [if volume is high, we may process submissions earlier for students]
 
 
-    2. Originality AI
-    -This system is stricter than Turnitin, generates reports faster, suitable for students who use AI to write essays and want to continuously reduce AI%
+    2. Originality AI [Service paused — contact support for details]
+    -Stricter than Turnitin, faster report turnaround; suited to students who write with AI and want to keep reducing AI-related scores]
 
-    3. Need help reducing AI / homework assistance?
+
+    3. Want help reducing AI / homework assistance?
     Contact @Prof_writerchannel
 
-    🚀 How It Works:
+    🚀 How to use:
 
     1️⃣ Upload your essay
-    2️⃣ Wait around 30 minutes
+    2️⃣ Wait about 30 minutes
     3️⃣ Receive your report
 
     👇 Ready?
-    Click "Upload Essay" or send your file directly!
+    Tap "Upload Essay" or send your file directly
 
 welcome-button-upload = 📤 Upload Essay
 welcome-button-profile = 👤 Profile
@@ -152,7 +153,7 @@ help-message =
     
     <b>Credits System:</b>
     💳 1 credit = 30 HKD
-    • Turnitin: 2 credits per document
+    • Turnitin: 1 credit per document
     • Originality: it is calculated based on word counts of your doc
     You can purchase credits from your profile.
     
@@ -190,7 +191,7 @@ profile-message =
     💳 <b>Remaining Credits:</b> { $credit }
     
     Use credits to upload and analyze your essays.
-    • Turnitin: 2 credits per document
+    • Turnitin: 1 credit per document
     • Originality: it is calculated based on word counnts of your document
 
 profile-button-buy-credit = 💰 Buy Credits
@@ -216,7 +217,7 @@ credit-purchase-message =
     
     📝 <b>About Credits:</b>
     1 credit = 30 HKD
-    • Turnitin: 2 credits per document
+    • Turnitin: 1 credit per document
     • Originality: it is calculated based on word counts of your doc
     
     Choose how many credits you want to purchase:
