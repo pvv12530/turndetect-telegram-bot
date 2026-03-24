@@ -151,7 +151,7 @@ help-message =
     📦 Maximum 20MB
     
     <b>Credits System:</b>
-    💳 1 credit = 20 HKD
+    💳 1 credit = 30 HKD
     • Turnitin: 2 credits per document
     • Originality: it is calculated based on word counts of your doc
     You can purchase credits from your profile.
@@ -215,14 +215,14 @@ credit-purchase-message =
     💵 <b>Price:</b> { $pricePerCredit } HKD per credit
     
     📝 <b>About Credits:</b>
-    1 credit = 20 HKD
+    1 credit = 30 HKD
     • Turnitin: 2 credits per document
     • Originality: it is calculated based on word counts of your doc
     
     Choose how many credits you want to purchase:
 
-credit-button-buy-10 = Buy 10 (200 HKD)
-credit-button-buy-100 = Buy 100 (2000 HKD)
+credit-button-buy-10 = Buy 10 (270 HKD)
+credit-button-buy-100 = Buy 100 (2550 HKD)
 credit-button-buy-custom = Buy Custom Amount
 credit-button-pay-now = 💳 Pay Now
 credit-button-back-profile = ← Back to Profile
@@ -250,7 +250,7 @@ credit-purchase-custom-prompt =
     
     Please enter the number of credits you want to purchase (minimum 1):
     
-    Example: 50 (for 1000 HKD)
+    Example: 50 (for 1500 HKD)
 
 credit-purchase-invalid-amount =
     ❌ <b>Invalid Amount</b>

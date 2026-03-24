@@ -82,7 +82,7 @@ export class StripeService {
             currency: options.currency,
             product_data: {
               name: `${options.credits} Credits`,
-              description: `Purchase ${options.credits} credits for essay analysis (1 credit = 20 HKD)`,
+              description: `Purchase ${options.credits} credits for essay analysis (1 credit = 30 HKD)`,
             },
             unit_amount: options.amount, // Amount in cents
           },

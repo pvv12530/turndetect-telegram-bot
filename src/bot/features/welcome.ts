@@ -1,4 +1,5 @@
 import type { Context } from '#root/bot/context.js'
+import { calculateCreditPrice } from '#root/bot/features/credit.js'
 import { logHandle } from '#root/bot/helpers/logging.js'
 import { Composer, InlineKeyboard } from 'grammy'
 
@@ -350,10 +351,11 @@ async function showCourseRequestPaymentPanel(ctx: Context, courseRequestId: numb
   else {
     // Show "Buy Credits" link button
     // Create a special buy credit link that returns to course request
+    const quickBuyCredits = 5
     const { url: buyCreditUrl } = await ctx.stripeService.createCreditPurchaseLink({
       customerId: user.customer_id,
-      credits: 5, // Default to 10 credits
-      amount: 900, // 10 credits * 20 HKD * 100 cents
+      credits: quickBuyCredits,
+      amount: calculateCreditPrice(quickBuyCredits) * 100,
       currency: 'hkd',
       botUsername: ctx.config.botUsername,
     })

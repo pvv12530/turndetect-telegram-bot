@@ -5,7 +5,7 @@ A Telegram bot for plagiarism detection and essay analysis using Turnitin's tech
 ## Features
 
 - 📤 **Essay Upload**: Upload documents (.doc, .docx) for plagiarism analysis
-- 💳 **Credit-Based System**: Purchase credits (1 credit = 20 HKD) to analyze essays
+- 💳 **Credit-Based System**: Purchase credits (1 credit = 30 HKD) to analyze essays
 - 💰 **Stripe Integration**: Secure payment processing via Stripe
 - 🗄️ **Supabase Database**: User management, transaction tracking, and file storage
 - 🌐 **Multi-language Support**: English and Chinese (Traditional/Simplified)
@@ -157,7 +157,7 @@ project-root/
 
 1. **Start the Bot**: Users send `/start` to begin
 2. **Upload Essay**: Click "Upload Essay" button or send a document directly
-3. **Purchase Credits**: If credits are insufficient, users can purchase credits (1 credit = 20 HKD)
+3. **Purchase Credits**: If credits are insufficient, users can purchase credits (1 credit = 30 HKD)
 4. **View Profile**: Check credit balance and purchase history
 5. **Provide Feedback**: Share feedback about the service
 
@@ -165,8 +165,8 @@ project-root/
 
 - Each essay upload costs **1 credit**
 - Credits can be purchased in packages:
-  - 10 credits for 200 HKD
-  - 100 credits for 2000 HKD
+  - 10 credits for 270 HKD
+  - 100 credits for 2550 HKD
   - Custom amount (minimum 1 credit)
 
 ### Supported File Formats

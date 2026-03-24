@@ -7,15 +7,15 @@ const composer = new Composer<Context>()
 const feature = composer.chatType('private')
 
 // Calculate price in HKD based on credit amount (bulk pricing)
-function calculateCreditPrice(credits: number): number {
+export function calculateCreditPrice(credits: number): number {
   if (credits === 10) {
-    return 180 // 10 credits = HKD 180
+    return 270 // 10 credits (10% off list 300 HKD)
   }
   if (credits === 100) {
-    return 1700 // 100 credits = HKD 1700
+    return 2550 // 100 credits (15% off list 3000 HKD)
   }
-  // For other amounts: 1 credit = 20 HKD
-  return credits * 20
+  // For other amounts: 1 credit = 30 HKD
+  return credits * 30
 }
 
 // Handle buy credit button
@@ -52,7 +52,7 @@ feature.callbackQuery('buy_credit', logHandle('callback-buy-credit'), async (ctx
     await ctx.editMessageText(
       ctx.t('credit-purchase-message', {
         currentCredit: credit.toString(),
-        pricePerCredit: '20', // 1 credit = 20 HKD
+        pricePerCredit: '30', // 1 credit = 30 HKD
       }),
       {
         parse_mode: 'HTML',

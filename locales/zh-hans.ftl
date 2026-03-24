@@ -151,7 +151,7 @@ help-message =
     📦 最大 20MB
     
     <b>積分系統：</b>
-    💳 1 積分 = 20 港幣
+    💳 1 積分 = 30 港幣
     • Turnitin：每份文檔 2 積分
     • Originality：根據文檔字數計算
     您可以從個人資料購買積分。
@@ -215,14 +215,14 @@ credit-purchase-message =
     💵 <b>價格：</b> { $pricePerCredit } 港幣/積分
     
     📝 <b>關於積分：</b>
-    1 積分 = 20 港幣
+    1 積分 = 30 港幣
     • Turnitin：每份文檔 2 積分
     • Originality：根據文檔字數計算
     
     選擇您要購買的積分數量：
 
-credit-button-buy-10 = 購買 10 積分 (200 港幣)
-credit-button-buy-100 = 購買 100 積分 (2000 港幣)
+credit-button-buy-10 = 購買 10 積分 (270 港幣)
+credit-button-buy-100 = 購買 100 積分 (2550 港幣)
 credit-button-buy-custom = 自定義數量
 credit-button-pay-now = 💳 立即支付
 credit-button-back-profile = ← 返回個人資料
@@ -250,7 +250,7 @@ credit-purchase-custom-prompt =
     
     請輸入您要購買的積分數量（最少 1）：
     
-    例如：50（1000 港幣）
+    例如：50（1500 港幣）
 
 credit-purchase-invalid-amount =
     ❌ <b>無效金額</b>
