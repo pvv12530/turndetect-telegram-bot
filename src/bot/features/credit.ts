@@ -1,22 +1,11 @@
 import type { Context } from '#root/bot/context.js'
 import { logHandle } from '#root/bot/helpers/logging.js'
+import { calculateCreditPrice, pricingI18nPlaceholders } from '#root/constants/pricing.js'
 import { Composer, InlineKeyboard } from 'grammy'
 
 const composer = new Composer<Context>()
 
 const feature = composer.chatType('private')
-
-// Calculate price in HKD based on credit amount (bulk pricing)
-export function calculateCreditPrice(credits: number): number {
-  if (credits === 10) {
-    return 270 // 10 credits (10% off list 300 HKD)
-  }
-  if (credits === 100) {
-    return 2550 // 100 credits (15% off list 3000 HKD)
-  }
-  // For other amounts: 1 credit = 30 HKD
-  return credits * 30
-}
 
 // Handle buy credit button
 feature.callbackQuery('buy_credit', logHandle('callback-buy-credit'), async (ctx) => {
@@ -42,8 +31,8 @@ feature.callbackQuery('buy_credit', logHandle('callback-buy-credit'), async (ctx
     const credit = Number(user.credit) || 0
 
     const keyboard = new InlineKeyboard()
-      .text(ctx.t('credit-button-buy-10'), 'buy_credit_10')
-      .text(ctx.t('credit-button-buy-100'), 'buy_credit_100')
+      .text(ctx.t('credit-button-buy-10', pricingI18nPlaceholders()), 'buy_credit_10')
+      .text(ctx.t('credit-button-buy-100', pricingI18nPlaceholders()), 'buy_credit_100')
       .row()
       .text(ctx.t('credit-button-buy-custom'), 'buy_credit_custom')
       .row()
@@ -51,8 +40,8 @@ feature.callbackQuery('buy_credit', logHandle('callback-buy-credit'), async (ctx
 
     await ctx.editMessageText(
       ctx.t('credit-purchase-message', {
+        ...pricingI18nPlaceholders(),
         currentCredit: credit.toString(),
-        pricePerCredit: '30', // 1 credit = 30 HKD
       }),
       {
         parse_mode: 'HTML',
@@ -83,7 +72,7 @@ feature.callbackQuery('buy_credit_100', logHandle('callback-buy-credit-100'), as
 // Handle buy custom credits
 feature.callbackQuery('buy_credit_custom', logHandle('callback-buy-credit-custom'), async (ctx) => {
   await ctx.answerCallbackQuery()
-  await ctx.reply(ctx.t('credit-purchase-custom-prompt'), {
+  await ctx.reply(ctx.t('credit-purchase-custom-prompt', pricingI18nPlaceholders()), {
     parse_mode: 'HTML',
   })
   ctx.session.waitingForCreditAmount = true

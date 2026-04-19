@@ -1,4 +1,5 @@
 import type { Config } from '#root/config.js'
+import { CREDIT_HKD_PER_CREDIT } from '#root/constants/pricing.js'
 import Stripe from 'stripe'
 
 export class StripeService {
@@ -82,7 +83,7 @@ export class StripeService {
             currency: options.currency,
             product_data: {
               name: `${options.credits} Credits`,
-              description: `Purchase ${options.credits} credits for essay analysis (1 credit = 30 HKD)`,
+              description: `Purchase ${options.credits} credits for essay analysis (1 credit = ${CREDIT_HKD_PER_CREDIT} HKD)`,
             },
             unit_amount: options.amount, // Amount in cents
           },

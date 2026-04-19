@@ -21,7 +21,7 @@ welcome =
     🔍 Highlights sections that involve AI or plagiarism
     📋 Supported format: docx (Microsoft Word file)
 
-    1. Turnitin report check [$30 per submission]
+    1. Turnitin report check [{"$"}{ $turnitinUsd }{ " per submission"}]
     -Uses the latest Turnitin system, with plagiarism similarity checks and AI detection reports
     -Scheduled daily processing: 15:00 / 18:00 / 21:00 / 23:59
     -We may also run extra batches outside these times [if volume is high, we may process submissions earlier for students]
@@ -152,7 +152,7 @@ help-message =
     📦 Maximum 20MB
     
     <b>Credits System:</b>
-    💳 1 credit = 30 HKD
+    💳 1 credit = { $pricePerCredit } HKD
     • Turnitin: 1 credit per document
     • Originality: it is calculated based on word counts of your doc
     You can purchase credits from your profile.
@@ -191,6 +191,7 @@ profile-message =
     💳 <b>Remaining Credits:</b> { $credit }
     
     Use credits to upload and analyze your essays.
+    💳 When buying credits: { $pricePerCredit } HKD per credit
     • Turnitin: 1 credit per document
     • Originality: it is calculated based on word counnts of your document
 
@@ -216,14 +217,14 @@ credit-purchase-message =
     💵 <b>Price:</b> { $pricePerCredit } HKD per credit
     
     📝 <b>About Credits:</b>
-    1 credit = 30 HKD
+    1 credit = { $pricePerCredit } HKD
     • Turnitin: 1 credit per document
     • Originality: it is calculated based on word counts of your doc
     
     Choose how many credits you want to purchase:
 
-credit-button-buy-10 = Buy 10 (270 HKD)
-credit-button-buy-100 = Buy 100 (2550 HKD)
+credit-button-buy-10 = Buy 10 ({ $creditPack10Hkd } HKD)
+credit-button-buy-100 = Buy 100 ({ $creditPack100Hkd } HKD)
 credit-button-buy-custom = Buy Custom Amount
 credit-button-pay-now = 💳 Pay Now
 credit-button-back-profile = ← Back to Profile
@@ -251,7 +252,7 @@ credit-purchase-custom-prompt =
     
     Please enter the number of credits you want to purchase (minimum 1):
     
-    Example: 50 (for 1500 HKD)
+    Example: { $creditExampleCredits } (for { $creditExampleHkd } HKD)
 
 credit-purchase-invalid-amount =
     ❌ <b>Invalid Amount</b>

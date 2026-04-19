@@ -1,6 +1,6 @@
 import type { Context } from '#root/bot/context.js'
-import { calculateCreditPrice } from '#root/bot/features/credit.js'
 import { logHandle } from '#root/bot/helpers/logging.js'
+import { calculateCreditPrice, pricingI18nPlaceholders } from '#root/constants/pricing.js'
 import { Composer, InlineKeyboard } from 'grammy'
 
 const composer = new Composer<Context>()
@@ -202,7 +202,7 @@ feature.command('start', logHandle('command-start'), async (ctx) => {
     .row()
     .text(ctx.t('welcome-button-help'), 'help')
 
-  return ctx.reply(ctx.t('welcome'), {
+  return ctx.reply(ctx.t('welcome', pricingI18nPlaceholders()), {
     parse_mode: 'HTML',
     reply_markup: keyboard,
   })

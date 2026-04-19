@@ -1,6 +1,7 @@
 import type { Context } from '#root/bot/context.js'
 import { Buffer } from 'node:buffer'
 import { logHandle } from '#root/bot/helpers/logging.js'
+import { pricingI18nPlaceholders, TURNITIN_CREDITS_PER_DOCUMENT } from '#root/constants/pricing.js'
 import { apiClient } from '#root/services/api.client.js'
 import { Composer, InlineKeyboard } from 'grammy'
 import mammoth from 'mammoth'
@@ -10,35 +11,33 @@ import WordExtractor from 'word-extractor'
 async function extractTextFromDocx(input: ArrayBuffer | Buffer): Promise<string> {
   try {
     const bufferSize = input instanceof Buffer ? input.length : input.byteLength
-    // eslint-disable-next-line no-console
+
     console.warn(`[extractTextFromDocx] Starting extraction, buffer size: ${bufferSize}`)
 
     // Mammoth prefers Buffer over ArrayBuffer
     const buffer = input instanceof Buffer ? input : Buffer.from(new Uint8Array(input))
-    // eslint-disable-next-line no-console
+
     console.warn(`[extractTextFromDocx] Using buffer of size: ${buffer.length}`)
 
     // First try extractRawText - this extracts plain text directly
     const rawTextResult = await mammoth.extractRawText({ buffer })
-    // eslint-disable-next-line no-console
+
     console.warn(`[extractTextFromDocx] Raw text length: ${rawTextResult.value?.length || 0}, messages: ${rawTextResult.messages?.length || 0}`)
 
     if (rawTextResult.messages && rawTextResult.messages.length > 0) {
-      // eslint-disable-next-line no-console
       console.warn(`[extractTextFromDocx] Mammoth messages:`, rawTextResult.messages)
     }
 
     if (rawTextResult.value && rawTextResult.value.trim().length > 0) {
-      // eslint-disable-next-line no-console
       console.warn(`[extractTextFromDocx] Successfully extracted ${rawTextResult.value.length} chars via extractRawText`)
       return rawTextResult.value
     }
 
     // If extractRawText doesn't work or returns empty, try convertToHtml and extract text
-    // eslint-disable-next-line no-console
+
     console.warn(`[extractTextFromDocx] Trying convertToHtml fallback`)
     const htmlResult = await mammoth.convertToHtml({ buffer })
-    // eslint-disable-next-line no-console
+
     console.warn(`[extractTextFromDocx] HTML result length: ${htmlResult.value?.length || 0}`)
 
     if (htmlResult.value) {
@@ -57,7 +56,6 @@ async function extractTextFromDocx(input: ArrayBuffer | Buffer): Promise<string>
         .trim()
 
       if (textContent.length > 0) {
-        // eslint-disable-next-line no-console
         console.warn(`[extractTextFromDocx] Successfully extracted ${textContent.length} chars via convertToHtml`)
         return textContent
       }
@@ -518,9 +516,9 @@ feature.on('message:document', logHandle('message-document'), async (ctx) => {
 
     // Handle other services (existing workflow)
     // Check user credit for non-originality services
-    // Turnitin = 1 credit per document
+    // Turnitin = 1 credit per document (see pricing constants)
     const currentCredit = Number(user.credit) || 0
-    const requiredCredit = 1
+    const requiredCredit = TURNITIN_CREDITS_PER_DOCUMENT
 
     if (currentCredit < requiredCredit) {
       const keyboard = new InlineKeyboard()
@@ -1310,7 +1308,7 @@ feature.callbackQuery('help', logHandle('callback-help'), async (ctx) => {
     .row()
     .text(ctx.t('upload-button-back-home'), 'home')
 
-  await ctx.editMessageText(ctx.t('help-message'), {
+  await ctx.editMessageText(ctx.t('help-message', pricingI18nPlaceholders()), {
     reply_markup: keyboard,
   })
 })
@@ -1363,7 +1361,7 @@ feature.callbackQuery('home', logHandle('callback-home'), async (ctx) => {
     .row()
     .text(ctx.t('welcome-button-help'), 'help')
 
-  await ctx.editMessageText(ctx.t('welcome'), {
+  await ctx.editMessageText(ctx.t('welcome', pricingI18nPlaceholders()), {
     parse_mode: 'HTML',
     reply_markup: keyboard,
   })

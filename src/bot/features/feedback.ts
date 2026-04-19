@@ -1,5 +1,6 @@
 import type { Context } from '#root/bot/context.js'
 import { logHandle } from '#root/bot/helpers/logging.js'
+import { pricingI18nPlaceholders } from '#root/constants/pricing.js'
 import { Composer, InlineKeyboard } from 'grammy'
 
 const composer = new Composer<Context>()
@@ -99,7 +100,7 @@ feature.callbackQuery('feedback_exit', logHandle('callback-feedback-exit'), asyn
     .row()
     .text(ctx.t('welcome-button-help'), 'help')
 
-  await ctx.editMessageText(ctx.t('welcome'), {
+  await ctx.editMessageText(ctx.t('welcome', pricingI18nPlaceholders()), {
     parse_mode: 'HTML',
     reply_markup: keyboard,
   })

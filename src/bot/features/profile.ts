@@ -1,5 +1,6 @@
 import type { Context } from '#root/bot/context.js'
 import { logHandle } from '#root/bot/helpers/logging.js'
+import { pricingI18nPlaceholders } from '#root/constants/pricing.js'
 import { Composer, InlineKeyboard } from 'grammy'
 
 const composer = new Composer<Context>()
@@ -37,6 +38,7 @@ feature.callbackQuery('profile', logHandle('callback-profile'), async (ctx) => {
 
     await ctx.editMessageText(
       ctx.t('profile-message', {
+        ...pricingI18nPlaceholders(),
         credit: credit.toString(),
       }),
       {
