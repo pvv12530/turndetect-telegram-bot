@@ -21,7 +21,7 @@ welcome =
     🔍 會Highlight 有用AI/抄襲的部分
     📋 支援格式：docx.  (Microsoft word file)
 
-    1. Turnitin 報告檢查  [{"$"}{ $turnitinUsd }{"/次"}]
+    1. Turnitin 報告檢查  [{"$"}{ $pricePerCredit }{"/次"}]
     -採用最新 Turnitin 系統，提供抄襲相率檢查與 AI 檢測報告
     -每天定時檢查: 15:00/18:00/21:00/23:59 
     -有時會不定時檢查 [如果檢查量過多，我們會提早為同學檢查]

@@ -21,7 +21,7 @@ welcome =
     🔍 Highlights sections that involve AI or plagiarism
     📋 Supported format: docx (Microsoft Word file)
 
-    1. Turnitin report check [{"$"}{ $turnitinUsd }{ " per submission"}]
+    1. Turnitin report check [{"$"}{ $pricePerCredit }{ " per submission"}]
     -Uses the latest Turnitin system, with plagiarism similarity checks and AI detection reports
     -Scheduled daily processing: 15:00 / 18:00 / 21:00 / 23:59
     -We may also run extra batches outside these times [if volume is high, we may process submissions earlier for students]
